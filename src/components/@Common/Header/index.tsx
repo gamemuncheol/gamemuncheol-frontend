@@ -7,7 +7,7 @@ import logoText from '@/assets/logo/GamemuncheolTextLogo.svg';
 
 export default function Header() {
   return (
-    <header className="w-full h-[3.75rem] flex justify-between items-center ">
+    <header className="w-full h-[3.75rem] flex justify-between items-center sticky bg-white top-0 z-10 ">
       <div className="flex items-center ml-10 gap-5">
         <div className="flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-black100 rounded-lg">
           <Image

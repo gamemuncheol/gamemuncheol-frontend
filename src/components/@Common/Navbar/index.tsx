@@ -5,7 +5,7 @@ import { navItem } from './data/navList';
 
 export default function Navbar() {
   return (
-    <nav className="h-screen w-[6.5rem] flex flex-col justify-between ">
+    <nav className="sticky left-0 h-screen w-[6.5rem] flex flex-col justify-between">
       <ul className="flex flex-col items-center justify-center">
         {navItem.map((item) => {
           return (
