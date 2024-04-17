@@ -29,6 +29,9 @@ const config: Config = {
       black100: '#F3F3F3',
       white: '#FFFFFF',
     },
+    fontColors: {
+      fontColor02: '#404040',
+    },
     fontFamily: {
       sansNeoBold: ['SpoqaHanSansNeo-Bold', 'sans-serif'],
       sansNeoMedium: ['SpoqaHanSansNeo-Medium', 'sans-serif'],
