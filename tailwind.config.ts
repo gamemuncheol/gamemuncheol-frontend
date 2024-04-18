@@ -29,13 +29,16 @@ const config: Config = {
       white: '#FFFFFF',
     },
     fontColors: {
+      fontColor01: '#222222',
       fontColor02: '#404040',
+      fontColor03: '#575757',
     },
     fontFamily: {
       sansNeoBold: ['SpoqaHanSansNeo-Bold', 'sans-serif'],
       sansNeoMedium: ['SpoqaHanSansNeo-Medium', 'sans-serif'],
       SansNeoRegular: ['SpoqaHanSansNeo-Regular', 'sans-serif'],
     },
+
     extend: {
       backgroundImage: {
         'login-bg': "url('/login/bgtemp.png')",
