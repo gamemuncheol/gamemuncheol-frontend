@@ -27,6 +27,7 @@ const config: Config = {
       black200: '#D7D9DA',
       black100: '#F3F3F3',
       white: '#FFFFFF',
+      'primary-font-color': '#575757',
     },
     fontColors: {
       fontColor01: '#222222',
