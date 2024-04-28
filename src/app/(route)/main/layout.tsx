@@ -1,12 +1,15 @@
-import { ReactElement } from 'react';
-
-export default function VideoContainerLayout(props: {
-  category: string;
-  title: string;
+export default function VideoContainerLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  image: ReactElement;
+  params: {
+    category: string;
+    title: string;
+    image: JSX.Element;
+  };
 }) {
-  const { category, title, image, children } = props;
+  const { category, title, image } = params;
 
   return (
     <article className="mb-12">
