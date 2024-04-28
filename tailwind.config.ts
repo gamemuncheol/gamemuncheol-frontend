@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-
 const config: Config = {
   content: [
     './src/**/*',
@@ -28,14 +27,22 @@ const config: Config = {
       black200: '#D7D9DA',
       black100: '#F3F3F3',
       white: '#FFFFFF',
+      'primary-font-color': '#575757',
+    },
+    fontColors: {
+      fontColor01: '#222222',
+      fontColor02: '#404040',
+      fontColor03: '#575757',
     },
     fontFamily: {
       sansNeoBold: ['SpoqaHanSansNeo-Bold', 'sans-serif'],
       sansNeoMedium: ['SpoqaHanSansNeo-Medium', 'sans-serif'],
       SansNeoRegular: ['SpoqaHanSansNeo-Regular', 'sans-serif'],
     },
+
     extend: {
       backgroundImage: {
+        'login-bg': "url('/login/bgtemp.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

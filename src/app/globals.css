@@ -25,3 +25,67 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@layer components {
+  .title01 {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .title02 {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .title03 {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .title04 {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .title05 {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 24px;
+    line-height: 18px;
+  }
+  .body01 {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .body02 {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .body03 {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 20px;
+    line-height: 18px;
+  }
+  .body04 {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .body05 {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 16px;
+    line-height: 14px;
+  }
+  .caption01 {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 15px;
+    line-height: 13px;
+  }
+  .caption02 {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 14px;
+    line-height: 12px;
+  }
+}
