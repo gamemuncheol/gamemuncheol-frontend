@@ -4,13 +4,14 @@ import Footer from '@/components/@Common/Footer';
 import Header from '@/components/@Common/Header';
 import Navbar from '@/components/@Common/Navbar';
 import { usePathname } from 'next/navigation';
+import { SessionProvider } from 'next-auth/react';
 
 export const LayoutProvider = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
 
   const CommonHideComponent = () => {
     const pagesToHide = ['/login'];
@@ -18,7 +19,7 @@ export const LayoutProvider = ({
   };
 
   return (
-    <>
+    <SessionProvider>
       {!CommonHideComponent() && <Header />}
 
       <main>
@@ -27,6 +28,6 @@ export const LayoutProvider = ({
       </main>
 
       {!CommonHideComponent() && <Footer />}
-    </>
+    </SessionProvider>
   );
 };
