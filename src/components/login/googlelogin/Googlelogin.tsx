@@ -3,12 +3,21 @@ import Image from 'next/image';
 import googlelogo from '@/assets/login/google.svg';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useEffect } from 'react';
+import GoogleLoginAPI from '@/services/login/GoogleLoginAPI';
 
 export default function GoogleLogin() {
+  const googleLogin = async () => {
+    const data = await GoogleLoginAPI();
+    console.log(data);
+  };
+
   const { data: session } = useSession();
-  // useEffect(() => {
-  //   console.log(session);
-  // });
+  useEffect(() => {
+    console.log(session);
+    if (session) {
+      googleLogin();
+    }
+  }, [session]);
   return (
     <div>
       {session ? (
