@@ -12,7 +12,7 @@ export default function VideoContainerLayout({
   const { category, title, image } = params;
 
   return (
-    <article className="mb-12">
+    <section className="mb-12">
       <div className="flex items-end">
         <div>
           <p className="text-sm font-SansNeoRegular text-primary-font-color">
@@ -28,6 +28,6 @@ export default function VideoContainerLayout({
       </div>
 
       {children}
-    </article>
+    </section>
   );
 }

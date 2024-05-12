@@ -72,7 +72,7 @@ interface IGraph {
 export const Graph = (props: IGraph) => {
   const { teamAPercentage, teamBPercentage } = props;
   return (
-    <div className="flex relative">
+    <div className="flex relative mt-1">
       <article className="flex relative">
         <GraphSVG fill="#E2148E" position="left" />
         <div className="font-SansNeoRegular absolute left-[9rem] text-lg flex justify-center items-center text-white">
