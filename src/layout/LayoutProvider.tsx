@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/@Common/Footer';
-import Header from '@/components/@Common/Header';
-import Navbar from '@/components/@Common/Navbar';
+import Footer from '@/components/@common/footer/Footer';
+import Header from '@/components/@common/header/Header';
+import Navbar from '@/components/@common/navbar/Navbar';
 import { usePathname } from 'next/navigation';
 
 export const LayoutProvider = ({
@@ -21,7 +21,7 @@ export const LayoutProvider = ({
     <>
       {!CommonHideComponent() && <Header />}
 
-      <main className="flex overflow-x-hidden ">
+      <main className={!CommonHideComponent() ? 'flex overflow-x-hidden' : ''}>
         {!CommonHideComponent() && <Navbar />}
         {children}
       </main>

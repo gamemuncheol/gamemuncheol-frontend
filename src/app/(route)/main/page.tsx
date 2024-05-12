@@ -5,9 +5,9 @@ import { MainHot, MainBonfire, MainLoudspeaker } from '@/assets/';
 import Image from 'next/image';
 
 import VideoContainerLayout from './layout';
-import Profile from '@/components/Main/components/Profile/Profile';
-import Thumbnail from '@/components/Main/components/Thumbnail/Thumbnail';
-import { Graph } from '@/components/Main/components/Graph/Graph';
+import Profile from '@/components/main/components/profile/Profile';
+import Thumbnail from '@/components/main/components/thumbnail/Thumbnail';
+import { Graph } from '@/components/main/components/graph/Graph';
 
 export default function Main() {
   return (
