@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import loginlogo from '@/assets/login/loginlogo.svg';
 import applelogo from '@/assets/login/apple.svg';
-import googlelogo from '@/assets/login/google.svg';
+import GoogleLogin from '@/components/Login/googlelogin/Googlelogin';
 // import BackgroundVideo from '@/components/login/background';
+
 export default function Login() {
   return (
     <>
@@ -38,17 +39,7 @@ export default function Login() {
             />
             <div className="body02 text-white">Apple로 계속하기</div>
           </div>
-          <div className="flex justify-center gap-2.5 items-center bg-white py-2.5 px-5  w-[358px] h-[50px] rounded-[54px]">
-            <Image
-              width={20}
-              height={20}
-              priority
-              src={googlelogo}
-              placeholder="empty"
-              alt="google"
-            />
-            <div className="body02 text-fontColor02">Google로 계속하기</div>
-          </div>
+          <GoogleLogin />
         </div>
       </div>
     </>
