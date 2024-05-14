@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/@Common/Footer';
-import Header from '@/components/@Common/Header';
-import Navbar from '@/components/@Common/Navbar';
+import Footer from '@/components/@common/footer/Footer';
+import Header from '@/components/@common/header/Header';
+import Navbar from '@/components/@common/navbar/Navbar';
 import { usePathname } from 'next/navigation';
 import { SessionProvider } from 'next-auth/react';
 
