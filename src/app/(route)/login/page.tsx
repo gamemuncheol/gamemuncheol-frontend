@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import loginlogo from '@/assets/login/loginlogo.svg';
 import applelogo from '@/assets/login/apple.svg';
-import googlelogo from '@/assets/login/google.svg';
 import GoogleLogin from '@/components/Login/googlelogin/Googlelogin';
 // import BackgroundVideo from '@/components/login/background';
 
