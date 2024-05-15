@@ -15,34 +15,26 @@ export default function GoogleLogin() {
   const isLoggined = useLoginStore((state) => state.isLoggined);
   const setLogin = useLoginStore((state) => state.setLogin);
 
-  // const { data: session } = useSession();
-  const { data: session, status } = useSession();
-
   const useGoogleLogin = async () => {
     const data = await GoogleLoginAPI();
     console.log('google login api 호출 완료', data);
   };
-  useEffect(() => {
-    console.log(session);
-    if (session) {
-      useGoogleLogin();
-    }
-  }, [session]);
 
-  // useEffect(() => {
-  //   if (status === 'authenticated' && !isLoggined) {
-  //     setLogin(true);
-  //     //
-  //   } else if (status === 'unauthenticated') {
-  //     setLogin(false);
-  //   }
-  // }, [status, isLoggined, setLogin]);
+  // 로그아웃은 실제 /login 페이지에는 없지만, 로그인 구현을 위해 임시 생성
+  const handleLogout = () => {
+    setLogin(false);
+
+    // todo : 로그아웃 처리 로직 구현하기
+  };
 
   return (
     <div>
-      {status == 'authenticated' ? (
+      {isLoggined ? (
         <div className="flex justify-center gap-2.5 items-center bg-white py-2.5 px-5  w-[358px] h-[50px] rounded-[54px]">
-          <div onClick={() => signOut()} className="body02 text-fontColor02">
+          <div
+            onClick={() => handleLogout()}
+            className="body02 text-fontColor02"
+          >
             로그아웃
           </div>
         </div>
@@ -57,7 +49,10 @@ export default function GoogleLogin() {
             placeholder="empty"
             alt="google"
           />
-          <div onClick={() => signIn()} className="body02 text-fontColor02">
+          <div
+            onClick={() => useGoogleLogin()}
+            className="body02 text-fontColor02 cursor-pointer"
+          >
             Google로 계속하기
           </div>
         </div>
