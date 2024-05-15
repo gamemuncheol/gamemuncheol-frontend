@@ -1,10 +1,8 @@
 'use client';
 import Image from 'next/image';
 import googlelogo from '@/assets/login/google.svg';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { useEffect } from 'react';
 import GoogleLoginAPI from '@/services/login/GoogleLoginAPI';
-import { useSearchParams, usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import useLoginStore from '@/store/useLoginStore';
 
 export default function GoogleLogin() {
