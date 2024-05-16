@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 const useLoginStore = create<LoginState>((set) => ({
   isLoggined: false,
-  setLogin: (loggedInStatus) => set({ isLoggined: loggedInStatus }),
+  setIsLoggined: (loggedInStatus) => set({ isLoggined: loggedInStatus }),
 }));
 
 export default useLoginStore;
