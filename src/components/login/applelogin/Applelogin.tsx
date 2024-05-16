@@ -14,7 +14,12 @@ export default function AppleLogin() {
           placeholder="empty"
           alt="apple"
         />
-        <div className="body02 text-white cursor-pointer">Apple로 계속하기</div>
+        <a
+          className="body02 text-white cursor-pointer"
+          href={`${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/apple?redirect_uri=https://localhost:3000/login&mode=login`}
+        >
+          Apple로 계속하기
+        </a>
       </div>
     </div>
   );
