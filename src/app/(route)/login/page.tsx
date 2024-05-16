@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import loginlogo from '@/assets/login/loginlogo.svg';
 import applelogo from '@/assets/login/apple.svg';
-import GoogleLogin from '@/components/Login/googlelogin/Googlelogin';
-import Video from 'next-video';
-// import BackgroundVideo from 'next-video/background-video';
-import bgvideo from '/videos/loginbg.mp4?thumbnailTime=0';
+import GoogleLogin from '@/components/login/googlelogin/Googlelogin';
+// import Video from 'next-video';
+// import bgvideo from '/videos/loginbg.mp4?thumbnailTime=0';
+
 export default function Login() {
   return (
     <>
