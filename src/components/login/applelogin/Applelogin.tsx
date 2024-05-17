@@ -15,7 +15,7 @@ export default function AppleLogin() {
           alt="apple"
         />
         <a
-          className="body02 text-white cursor-pointer"
+          className="body02M text-white cursor-pointer"
           href={`${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/apple?redirect_uri=https://localhost:3000/login&mode=login`}
         >
           Apple로 계속하기

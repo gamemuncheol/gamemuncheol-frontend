@@ -33,7 +33,7 @@ export default function LoginView() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-screen bg-login-bg gap-6">
+      <div className="flex flex-col items-center justify-center gap-6">
         <Image
           width={360}
           height={200}
@@ -44,10 +44,10 @@ export default function LoginView() {
         />
         <div className="flex flex-col items-center gap-2.5">
           <div className="flex flex-col items-center">
-            <div className="title01 text-white">정치질과 입롤에 지칠 때는</div>
-            <div className="title01 text-white">112말고, 롤문철</div>
+            <div className="title01M text-white">정치질과 입롤에 지칠 때는</div>
+            <div className="title01M text-white">112말고, 롤문철</div>
           </div>
-          <div className="body02 text-white">
+          <div className="body02R text-white">
             로그인 후 이용하실 수 있습니다.
           </div>
         </div>

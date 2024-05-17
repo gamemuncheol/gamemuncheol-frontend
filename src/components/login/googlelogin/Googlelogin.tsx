@@ -9,7 +9,7 @@ export default function GoogleLogin() {
         <Image width={20} height={20} priority src={googlelogo} alt="google" />
         <a
           href={`${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/google?redirect_uri=https://localhost:3000/login&mode=login`}
-          className="body02 text-fontColor02 cursor-pointer"
+          className="body02M text-fontColor02 cursor-pointer"
         >
           Google로 계속하기
         </a>
