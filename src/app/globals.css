@@ -27,54 +27,105 @@
 }
 
 @layer components {
-  .title01 {
+  .title01B {
     font-family: 'SpoqaHanSansNeo-Bold';
     font-size: 26px;
     line-height: 32px;
   }
 
-  .title02 {
+  .title02B {
     font-family: 'SpoqaHanSansNeo-Bold';
     font-size: 24px;
     line-height: 30px;
   }
-  .title03 {
+  .title03B {
     font-family: 'SpoqaHanSansNeo-Bold';
     font-size: 22px;
     line-height: 28px;
   }
-  .title04 {
+  .title04B {
     font-family: 'SpoqaHanSansNeo-Bold';
     font-size: 20px;
     line-height: 26px;
   }
-  .title05 {
+  .title05B {
     font-family: 'SpoqaHanSansNeo-Bold';
     font-size: 24px;
     line-height: 18px;
   }
-  .body01 {
+  .title01M {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .title02M {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .title03M {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .title04M {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .title05M {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 24px;
+    line-height: 18px;
+  }
+  .body01M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 24px;
     line-height: 22px;
   }
-  .body02 {
+  .body02M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 22px;
     line-height: 20px;
   }
-  .body03 {
+  .body03M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 20px;
     line-height: 18px;
   }
-  .body04 {
+  .body04M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 16px;
     line-height: 18px;
   }
-  .body05 {
+  .body05M {
     font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 16px;
+    line-height: 14px;
+  }
+  .body01R {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .body02R {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .body03R {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 20px;
+    line-height: 18px;
+  }
+  .body04R {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .body05R {
+    font-family: 'SpoqaHanSansNeo-Regular';
     font-size: 16px;
     line-height: 14px;
   }
