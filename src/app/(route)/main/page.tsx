@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { MainHot, MainBonfire, MainLoudspeaker } from '@/assets/';
@@ -8,8 +10,15 @@ import VideoContainerLayout from './layout';
 import Profile from '@/components/main/components/profile/Profile';
 import Thumbnail from '@/components/main/components/thumbnail/Thumbnail';
 import { Graph } from '@/components/main/components/graph/Graph';
+import { useMainQueries } from '@/services/queries/main/main';
 
 export default function Main() {
+  const { mainListData, mainListLoading } = useMainQueries();
+
+  if (mainListLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <ul>
       <li className="flex justify-center items-center">
@@ -31,14 +40,17 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {Array.from({ length: 3 }).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item, index) => {
               return (
-                <div key={index} className="flex flex-col overflow-hidden ">
+                <div
+                  key={item.id}
+                  className="w-[26.5rem] flex flex-col overflow-hidden"
+                >
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={MainBonfire} />
 
                     <div className="p-[0.375rem]">
-                      <p>nickName</p>
+                      <p>{item.member.nickname}</p>
                       <p className="text-xs text-primary-font-color caption02">
                         조회수 5.9만회·6시간 전
                       </p>
@@ -46,15 +58,15 @@ export default function Main() {
                   </div>
 
                   <div
-                    style={{ width: '100%', height: 224 }}
-                    className="relative w-[33.3%] h-auto   bg-mainPurple z-2"
+                    style={{ width: 424, height: 228 }}
+                    className="relative bg-mainPurple z-2"
                   >
                     <Thumbnail width={0} height={0} src={MainLoudspeaker} />
                   </div>
 
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">디스크립션</span>
+                  <span className="mt-4">{item.content}</span>
                 </div>
               );
             })}
@@ -81,9 +93,12 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {Array.from({ length: 3 }).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item, index) => {
               return (
-                <div key={index} className="flex flex-col overflow-hidden ">
+                <div
+                  key={item.id}
+                  className="w-[26.5rem] flex flex-col overflow-hidden"
+                >
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={MainBonfire} />
 
@@ -96,14 +111,14 @@ export default function Main() {
                   </div>
 
                   <div
-                    style={{ width: 414, height: 224 }}
-                    className="relative w-[100%] h-auto   bg-mainPurple z-2"
+                    style={{ width: 424, height: 228 }}
+                    className="relative bg-mainPurple z-2"
                   >
                     <Thumbnail width={0} height={0} src={MainLoudspeaker} />
                   </div>
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">디스크립션</span>
+                  <span className="mt-4">{item.content}</span>
                 </div>
               );
             })}
@@ -130,9 +145,12 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {Array.from({ length: 3 }).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item, index) => {
               return (
-                <div key={index} className="flex flex-col overflow-hidden ">
+                <div
+                  key={item.id}
+                  className="w-[26.5rem] flex flex-col overflow-hidden"
+                >
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={MainBonfire} />
 
@@ -145,14 +163,14 @@ export default function Main() {
                   </div>
 
                   <div
-                    style={{ width: 414, height: 224 }}
-                    className="relative w-[100%] h-auto   bg-mainPurple z-2"
+                    style={{ width: 424, height: 228 }}
+                    className="relative bg-mainPurple z-2"
                   >
                     <Thumbnail width={0} height={0} src={MainLoudspeaker} />
                   </div>
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">디스크립션</span>
+                  <span className="mt-4">{item.content}</span>
                 </div>
               );
             })}
