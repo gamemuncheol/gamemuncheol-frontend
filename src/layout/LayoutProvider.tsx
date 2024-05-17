@@ -22,7 +22,7 @@ export const LayoutProvider = ({
     <SessionProvider>
       {!CommonHideComponent() && <Header />}
 
-      <main>
+      <main className={!CommonHideComponent() ? 'flex overflow-x-hidden' : ''}>
         {!CommonHideComponent() && <Navbar />}
         {children}
       </main>
