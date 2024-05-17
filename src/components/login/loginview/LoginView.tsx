@@ -9,7 +9,8 @@ import { useRouter } from 'next/navigation';
 import GoogleLogin from '../googlelogin/Googlelogin';
 import AppleLogin from '../applelogin/Applelogin';
 
-import useLoginStore from '@/store/useLoginStore';
+import useLoginStore from '@/store/useMemberStore';
+import isAgreedAPI from '@/services/useMember';
 
 export default function LoginView() {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function LoginView() {
   const isLoggined = useLoginStore((state) => state.isLoggined);
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
 
+  //
   useEffect(() => {
     if (accessToken && refreshToken) {
       localStorage.setItem('accessToken', accessToken);
@@ -31,6 +33,16 @@ export default function LoginView() {
     }
   }, [params]);
 
+  // is-agreed api 호출
+  useEffect(() => {
+    if (isLoggined) {
+      const setIsAgree = async () => {
+        const res = await isAgreedAPI();
+        console.log('res:', res);
+      };
+      setIsAgree();
+    }
+  }, [isLoggined]);
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-6">

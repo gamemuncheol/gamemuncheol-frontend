@@ -1,4 +1,4 @@
-import { LoginState } from '@/types/login-type';
+import { LoginState } from '@/types/member-type';
 import { create } from 'zustand';
 
 const useLoginStore = create<LoginState>((set) => ({
