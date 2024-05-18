@@ -13,7 +13,7 @@ export default function Thumbnail(props: ThumbnailType) {
     <Image
       priority
       src={src}
-      sizes="40vw"
+      sizes="100vw"
       placeholder="empty"
       alt="ThumbnailImage"
       fill
