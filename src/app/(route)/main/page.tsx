@@ -40,19 +40,19 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div
                   key={item.id}
                   className="w-[26.5rem] flex flex-col overflow-hidden"
                 >
                   <div className="flex flex-row gap-[0.375rem]">
-                    <Profile src={MainBonfire} />
+                    <Profile src={item.member.picture ?? MainBonfire} />
 
                     <div className="p-[0.375rem]">
                       <p>{item.member.nickname}</p>
                       <p className="text-xs text-primary-font-color caption02">
-                        조회수 5.9만회·6시간 전
+                        조회수 {item.viewCount}회·6시간 전
                       </p>
                     </div>
                   </div>
@@ -61,12 +61,16 @@ export default function Main() {
                     style={{ width: 424, height: 228 }}
                     className="relative bg-mainPurple z-2"
                   >
-                    <Thumbnail width={0} height={0} src={MainLoudspeaker} />
+                    <Thumbnail
+                      width={0}
+                      height={0}
+                      src={item.thumbnailUrl ?? MainLoudspeaker}
+                    />
                   </div>
 
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">{item.content}</span>
+                  <span className="mt-4">{item?.content ?? ''}</span>
                 </div>
               );
             })}
@@ -93,7 +97,7 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div
                   key={item.id}
@@ -145,7 +149,7 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item, index) => {
+            {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div
                   key={item.id}
