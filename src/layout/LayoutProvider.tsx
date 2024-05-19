@@ -21,7 +21,7 @@ export const LayoutProvider = ({
     <>
       {!CommonHideComponent() && <Header />}
 
-      <main>
+      <main className={!CommonHideComponent() ? 'flex overflow-x-hidden' : ''}>
         {!CommonHideComponent() && <Navbar />}
         {children}
       </main>

@@ -52,7 +52,6 @@ next-env.d.ts
 
 .pnp.*
 
-
 # next-video
 videos/*
 !videos/*.json
@@ -61,3 +60,5 @@ videos/*
 public/_next-video
 
 certificates
+.env
+

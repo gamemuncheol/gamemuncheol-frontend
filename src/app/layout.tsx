@@ -4,6 +4,7 @@ import './globals.css';
 import { LayoutProvider } from '@/layout/LayoutProvider';
 import ReactQueryProvider from '@/layout/ReactQueryProvider';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
