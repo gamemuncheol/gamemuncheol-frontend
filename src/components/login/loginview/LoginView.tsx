@@ -10,7 +10,7 @@ import GoogleLogin from '../googlelogin/Googlelogin';
 import AppleLogin from '../applelogin/Applelogin';
 
 import useLoginStore from '@/store/useMemberStore';
-import isAgreedAPI from '@/services/useMember';
+import { useMemberQueries } from '@/services/queries/member';
 
 export default function LoginView() {
   const router = useRouter();
@@ -33,16 +33,15 @@ export default function LoginView() {
     }
   }, [params]);
 
-  // is-agreed api 호출
+  // is-agreed api
+  const { isAgreed, isAgreedLoading } = useMemberQueries();
+  if (isAgreedLoading) {
+    return <div>Loading...</div>;
+  }
   useEffect(() => {
-    if (isLoggined) {
-      const setIsAgree = async () => {
-        const res = await isAgreedAPI();
-        console.log('res:', res);
-      };
-      setIsAgree();
-    }
-  }, [isLoggined]);
+    console.log('is agreed : ', isAgreed);
+  }, [isAgreed]);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-6">
