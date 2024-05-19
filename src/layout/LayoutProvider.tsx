@@ -4,7 +4,6 @@ import Footer from '@/components/@common/footer/Footer';
 import Header from '@/components/@common/header/Header';
 import Navbar from '@/components/@common/navbar/Navbar';
 import { usePathname } from 'next/navigation';
-import { SessionProvider } from 'next-auth/react';
 
 export const LayoutProvider = ({
   children,
@@ -19,7 +18,7 @@ export const LayoutProvider = ({
   };
 
   return (
-    <SessionProvider>
+    <>
       {!CommonHideComponent() && <Header />}
 
       <main className={!CommonHideComponent() ? 'flex overflow-x-hidden' : ''}>
@@ -28,6 +27,6 @@ export const LayoutProvider = ({
       </main>
 
       {!CommonHideComponent() && <Footer />}
-    </SessionProvider>
+    </>
   );
 };
