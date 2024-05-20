@@ -33,15 +33,24 @@ export default function LoginView() {
     }
   }, [params]);
 
+  useEffect(() => {
+    const token = localStorage.getItem('refreshToken');
+    if (token) {
+      setIsLoggined(true);
+    }
+  }, []);
+
   // is-agreed api
   const { isAgreed, isAgreedLoading } = useMemberQueries();
+  useEffect(() => {
+    if (isAgreed) {
+      router.push('/main');
+    }
+  }, [isAgreed]);
+
   if (isAgreedLoading) {
     return <div>Loading...</div>;
   }
-  useEffect(() => {
-    console.log('is agreed : ', isAgreed);
-  }, [isAgreed]);
-
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-6">
