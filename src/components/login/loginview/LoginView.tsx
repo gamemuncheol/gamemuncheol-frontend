@@ -87,17 +87,21 @@ export default function LoginView() {
           </div>
         </div>
       ) : (
-        <div className="w-[485px] ">
+        <div className="w-[485px] h-[465px]">
           <Modal
             title="약관에 동의해주세요"
             subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
             isOpen={isOpen}
             onClose={handleClose}
-            leftButton={{ text: 'Submit', onClick: handleClose }}
-            rightButton={{ text: 'Submit', onClick: handleClose }}
+            leftButton={{ text: '취소', onClick: handleClose }}
+            rightButton={{ text: '확인', onClick: handleClose }}
           >
-            <div className="w-auto flex">
-              <div>가운데 </div>
+            <div className="flex flex-col">
+              <div>모두 동의 </div>
+              <div>[필수] 만 14세 이상입니다. </div>
+              <div>[필수] 서비스 이용 약관 동의 </div>
+              <div>[필수] 개인정보 처리방침 동의 </div>
+              <div>[선택] 마켓팅 수신 동의 </div>
             </div>
           </Modal>
         </div>
