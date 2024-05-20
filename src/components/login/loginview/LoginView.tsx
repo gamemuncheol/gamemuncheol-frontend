@@ -43,7 +43,9 @@ export default function LoginView() {
   // is-agreed api
   const { isAgreed, isAgreedLoading } = useMemberQueries();
   useEffect(() => {
-    console.log('is agreed : ', isAgreed);
+    if (isAgreed) {
+      router.push('/main');
+    }
   }, [isAgreed]);
 
   if (isAgreedLoading) {
