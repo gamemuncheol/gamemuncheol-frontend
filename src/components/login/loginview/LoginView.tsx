@@ -12,6 +12,7 @@ import AppleLogin from '../applelogin/Applelogin';
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
 import Modal from '@/components/@common/modal/Modal';
+import AgreeContent from '../agreecontent/AgreeContent';
 
 export default function LoginView() {
   const router = useRouter();
@@ -26,8 +27,10 @@ export default function LoginView() {
 
   // modal
   const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => setIsOpen(false);
-
+  const handleClose = () => {
+    setIsOpen(false);
+    router.push('/');
+  };
   useEffect(() => {
     if (accessToken && refreshToken) {
       localStorage.setItem('accessToken', accessToken);
@@ -96,13 +99,7 @@ export default function LoginView() {
             leftButton={{ text: '취소', onClick: handleClose }}
             rightButton={{ text: '확인', onClick: handleClose }}
           >
-            <div className="flex flex-col">
-              <div>모두 동의 </div>
-              <div>[필수] 만 14세 이상입니다. </div>
-              <div>[필수] 서비스 이용 약관 동의 </div>
-              <div>[필수] 개인정보 처리방침 동의 </div>
-              <div>[선택] 마켓팅 수신 동의 </div>
-            </div>
+            <AgreeContent />
           </Modal>
         </div>
       )}

@@ -19,14 +19,9 @@ const Modal = ({
           <div className="title04B">{title}</div>
           <div className="text-fontcolor03 body04R ">{subtitle}</div>
         </div>
-        <Image
-          width={32}
-          height={32}
-          priority
-          src={xbutton}
-          alt="x"
-          className="cursor-pointer"
-        />
+        <div className="cursor-pointer" onClick={onClose}>
+          <Image width={32} height={32} priority src={xbutton} alt="x" />
+        </div>
       </div>
       <div>{children}</div>
       <div className="flex flex-row justify-between h-[40px]">
