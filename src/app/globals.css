@@ -50,15 +50,14 @@
   }
   .title05B {
     font-family: 'SpoqaHanSansNeo-Bold';
-    font-size: 24px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 24px;
   }
   .title01M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 26px;
     line-height: 32px;
   }
-
   .title02M {
     font-family: 'SpoqaHanSansNeo-Medium';
     font-size: 24px;
@@ -76,23 +75,23 @@
   }
   .title05M {
     font-family: 'SpoqaHanSansNeo-Medium';
-    font-size: 24px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 24px;
   }
   .body01M {
     font-family: 'SpoqaHanSansNeo-Medium';
-    font-size: 24px;
-    line-height: 22px;
+    font-size: 22px;
+    line-height: 24px;
   }
   .body02M {
     font-family: 'SpoqaHanSansNeo-Medium';
-    font-size: 22px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 22px;
   }
   .body03M {
     font-family: 'SpoqaHanSansNeo-Medium';
-    font-size: 20px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 20px;
   }
   .body04M {
     font-family: 'SpoqaHanSansNeo-Medium';
@@ -101,23 +100,23 @@
   }
   .body05M {
     font-family: 'SpoqaHanSansNeo-Medium';
-    font-size: 16px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16px;
   }
   .body01R {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 24px;
-    line-height: 22px;
+    font-size: 22px;
+    line-height: 24px;
   }
   .body02R {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 22px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 22px;
   }
   .body03R {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 20px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 20px;
   }
   .body04R {
     font-family: 'SpoqaHanSansNeo-Regular';
@@ -126,17 +125,17 @@
   }
   .body05R {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 16px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16px;
   }
   .caption01 {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 15px;
-    line-height: 13px;
+    font-size: 13px;
+    line-height: 15px;
   }
   .caption02 {
     font-family: 'SpoqaHanSansNeo-Regular';
-    font-size: 14px;
-    line-height: 12px;
+    font-size: 12px;
+    line-height: 14px;
   }
 }

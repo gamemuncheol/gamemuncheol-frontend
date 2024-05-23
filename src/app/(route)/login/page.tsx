@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <div className="h-screen bg-login-bg flex flex-col">
       {/* <Video src={bgvideo} /> */}
-      <div className="flex flex-1 flex-col justify-center">
+      <div className="flex flex-1 flex-col justify-center items-center">
         <LoginView />
       </div>
       <div className="sticky bottom-0">

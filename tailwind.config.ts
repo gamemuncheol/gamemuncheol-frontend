@@ -6,6 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  mode: 'jit',
   theme: {
     screens: {
       sm: '480px',
@@ -27,13 +28,12 @@ const config: Config = {
       black200: '#D7D9DA',
       black100: '#F3F3F3',
       white: '#FFFFFF',
+      fontcolor01: '#222222',
+      fontcolor02: '#404040',
+      fontcolor03: '#575757',
       'primary-font-color': '#575757',
     },
-    fontColors: {
-      fontColor01: '#222222',
-      fontColor02: '#404040',
-      fontColor03: '#575757',
-    },
+
     fontFamily: {
       sansNeoBold: ['SpoqaHanSansNeo-Bold', 'sans-serif'],
       sansNeoMedium: ['SpoqaHanSansNeo-Medium', 'sans-serif'],
