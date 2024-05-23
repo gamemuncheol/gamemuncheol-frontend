@@ -1,7 +1,16 @@
 import { ModalProps } from '@/types/common-type';
 import xbutton from '@/assets/common/x.svg';
 import Image from 'next/image';
-const Modal = ({ title, subtitle, onClose, children, leftButton, rightButton }: ModalProps) => {
+const Modal = ({
+  title,
+  subtitle,
+  onClose,
+  children,
+  leftButton,
+  rightButton,
+  isDisable,
+  canRight,
+}: ModalProps) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-3xl p-4">
@@ -22,12 +31,23 @@ const Modal = ({ title, subtitle, onClose, children, leftButton, rightButton }: 
           >
             <div className="body04M text-white">{leftButton.text}</div>
           </div>
-          <div
-            className="w-[48%] bg-mainPurple flex items-center justify-center cursor-pointer"
-            onClick={rightButton.onClick}
-          >
-            <div className="body04M text-white">{rightButton.text}</div>
-          </div>
+          {isDisable ? (
+            <div
+              className={`w-[48%] flex items-center justify-center cursor-pointer ${
+                canRight ? 'bg-mainPurple' : 'bg-disablePurple'
+              } `}
+              onClick={canRight ? rightButton.onClick : undefined}
+            >
+              <div className="body04M text-white">{rightButton.text}</div>
+            </div>
+          ) : (
+            <div
+              className="w-[48%] bg-mainPurple flex items-center justify-center cursor-pointer"
+              onClick={rightButton.onClick}
+            >
+              <div className="body04M text-white">{rightButton.text}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>

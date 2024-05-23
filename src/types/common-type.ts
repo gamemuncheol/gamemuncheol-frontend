@@ -18,4 +18,7 @@ export interface ModalProps {
     text: string;
     onClick: () => void;
   };
+
+  isDisable?: boolean; // right 버튼이 disable 되는지 여부
+  canRight?: boolean; // isDisable일 때, canRight가 false면 disable, true면 버튼 클릭 가능
 }
