@@ -11,7 +11,7 @@ import AppleLogin from '../applelogin/Applelogin';
 
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
-import Agree from '@/components/signup/agree/Agree';
+import Agree from '@/components/signup/useragree/UserAgree';
 export default function LoginView() {
   const router = useRouter();
   const params = useSearchParams();
