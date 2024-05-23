@@ -6,7 +6,6 @@ export interface FooterProps {
 export interface ModalProps {
   title: string; // 제목
   subtitle: string; // 소제목
-  isOpen: boolean; // 모달의 표시 여부
   onClose: () => void; // X 버튼(취소 버튼)을 클릭했을 때 호출할 함수
   children: React.ReactNode; //가운데 내용 영역에 들어갈 React 노드
   leftButton: {

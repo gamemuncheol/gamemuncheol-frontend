@@ -39,14 +39,13 @@ const Agree = () => {
       <Modal
         title="약관에 동의해주세요"
         subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
-        isOpen={true}
         onClose={handleClose}
         leftButton={{ text: '취소', onClick: handleClose }}
         rightButton={{ text: '확인', onClick: handleClose }}
       >
         <div className="flex flex-col gap-2 pb-[20px] pt-[20px]">
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-4">
               <div className="cursor-pointer" onClick={handleAllAgree}>
                 <Image
                   src={Object.values(checkAgree).every(Boolean) ? Checked : UnChecked}
@@ -54,16 +53,19 @@ const Agree = () => {
                 />
               </div>
               <div className="flex items-center body04R w-[100%] justify-between">
-                <div className="title05B">모두 동의</div>
+                <div className="flex flex-col gap-3">
+                  <div className="title05B">모두 동의</div>
+                  <div className="body05R text-fontcolor03">
+                    서비스 이용을 위해 아래 약관에 모두 동의합니다.
+                  </div>
+                </div>
                 <Image src={RightArrow} width={28} height={28} priority alt="next" />
               </div>
             </div>
-            <div className="body05R text-fontcolor03 text-center border-b-[1px] pb-[16px] border-b-black100">
-              서비스 이용을 위해 아래 약관에 모두 동의합니다.
-            </div>
+            <div className=" border-b-[1px] pb-[5px] border-b-black100"></div>
           </div>
 
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-4">
             <div className="cursor-pointer" onClick={() => handleAgreeToggle('ageCheck')}>
               <Image
                 src={checkAgree.ageCheck ? Checked : UnChecked}
@@ -79,7 +81,7 @@ const Agree = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-4">
             <div className="cursor-pointer" onClick={() => handleAgreeToggle('serviceCheck')}>
               <Image
                 src={checkAgree.serviceCheck ? Checked : UnChecked}
@@ -95,7 +97,7 @@ const Agree = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-4">
             <div className="cursor-pointer" onClick={() => handleAgreeToggle('privateInfoCheck')}>
               <Image
                 src={checkAgree.privateInfoCheck ? Checked : UnChecked}
@@ -111,7 +113,7 @@ const Agree = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-4">
             <div className="cursor-pointer" onClick={() => handleAgreeToggle('advertiseCheck')}>
               <Image
                 src={checkAgree.advertiseCheck ? Checked : UnChecked}

@@ -52,31 +52,20 @@ export default function LoginView() {
   }, [isAgreed]);
 
   if (isAgreedLoading) {
-    return <div>Loading...</div>;
+    return <div className="body01R text-white">로딩 중.. 잠시만 기다려주세요</div>;
   }
 
   return (
     <>
       {!isLoggined && (
         <div className="flex flex-col items-center justify-center gap-6">
-          <Image
-            width={360}
-            height={200}
-            priority
-            src={loginlogo}
-            placeholder="empty"
-            alt="logo"
-          />
+          <Image width={360} height={200} priority src={loginlogo} placeholder="empty" alt="logo" />
           <div className="flex flex-col items-center gap-2.5">
             <div className="flex flex-col items-center">
-              <div className="title01M text-white">
-                정치질과 입롤에 지칠 때는
-              </div>
+              <div className="title01M text-white">정치질과 입롤에 지칠 때는</div>
               <div className="title01M text-white">112말고, 롤문철</div>
             </div>
-            <div className="body02R text-white">
-              로그인 후 이용하실 수 있습니다.
-            </div>
+            <div className="body02R text-white">로그인 후 이용하실 수 있습니다.</div>
           </div>
 
           <div className="flex flex-col gap-4">
