@@ -11,9 +11,7 @@ import AppleLogin from '../applelogin/Applelogin';
 
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
-import Modal from '@/components/@common/modal/Modal';
-import AgreeContent from '../agreecontent/AgreeContent';
-
+import Agree from '@/components/signup/agree/Agree';
 export default function LoginView() {
   const router = useRouter();
   const params = useSearchParams();
@@ -27,10 +25,7 @@ export default function LoginView() {
 
   // modal
   const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => {
-    setIsOpen(false);
-    router.push('/');
-  };
+
   useEffect(() => {
     if (accessToken && refreshToken) {
       localStorage.setItem('accessToken', accessToken);
@@ -62,7 +57,7 @@ export default function LoginView() {
 
   return (
     <>
-      {!isLoggined ? (
+      {!isLoggined && (
         <div className="flex flex-col items-center justify-center gap-6">
           <Image
             width={360}
@@ -89,20 +84,8 @@ export default function LoginView() {
             <GoogleLogin />
           </div>
         </div>
-      ) : (
-        <div className="w-[485px] h-[465px]">
-          <Modal
-            title="약관에 동의해주세요"
-            subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
-            isOpen={isOpen}
-            onClose={handleClose}
-            leftButton={{ text: '취소', onClick: handleClose }}
-            rightButton={{ text: '확인', onClick: handleClose }}
-          >
-            <AgreeContent />
-          </Modal>
-        </div>
       )}
+      {isOpen && <Agree />}
     </>
   );
 }
