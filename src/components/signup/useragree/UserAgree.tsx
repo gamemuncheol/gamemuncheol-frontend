@@ -3,7 +3,7 @@ import { AgreementState } from '@/types/member-type';
 import Modal from '@/components/@common/modal/Modal';
 import { useRouter } from 'next/navigation';
 import AgreementsList from '../agreementslist/AgreementsList';
-const Agree = () => {
+const UserAgree = ({ handleAllAgreeConfirm }: { handleAllAgreeConfirm: () => void }) => {
   const router = useRouter();
   const [checkAgree, setCheckAgree] = useState<AgreementState>({
     ageCheck: false,
@@ -36,14 +36,14 @@ const Agree = () => {
   const [isListView, setIsListView] = useState(true);
   const [buttons, setButtons] = useState({
     leftButton: { text: '취소', onClick: handleClose },
-    rightButton: { text: '확인', onClick: handleClose },
+    rightButton: { text: '다음', onClick: handleAllAgreeConfirm },
   });
 
   const handleRestore = () => {
     setIsListView(true);
     setButtons({
       leftButton: { text: '취소', onClick: handleClose },
-      rightButton: { text: '확인', onClick: handleClose },
+      rightButton: { text: '다음', onClick: handleAllAgreeConfirm },
     });
   };
 
@@ -62,6 +62,11 @@ const Agree = () => {
     });
   };
 
+  // 다음 버튼 활성화 체크
+  const isDisable =
+    !checkAgree.ageCheck || !checkAgree.serviceCheck || !checkAgree.privateInfoCheck;
+  const canRight = checkAgree.ageCheck && checkAgree.serviceCheck && checkAgree.privateInfoCheck;
+
   return (
     <div className="w-[485px] h-[465px]">
       <Modal
@@ -70,6 +75,7 @@ const Agree = () => {
         onClose={handleClose}
         leftButton={buttons.leftButton}
         rightButton={buttons.rightButton}
+        {...(isListView ? { isDisable, canRight } : {})}
       >
         {isListView ? (
           <AgreementsList
@@ -86,4 +92,4 @@ const Agree = () => {
   );
 };
 
-export default Agree;
+export default UserAgree;

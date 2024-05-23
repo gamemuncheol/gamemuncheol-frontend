@@ -11,7 +11,8 @@ import AppleLogin from '../applelogin/Applelogin';
 
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
-import Agree from '@/components/signup/useragree/UserAgree';
+import UserAgree from '@/components/signup/useragree/UserAgree';
+import Nickname from '@/components/signup/nickname/Nickname';
 export default function LoginView() {
   const router = useRouter();
   const params = useSearchParams();
@@ -24,7 +25,8 @@ export default function LoginView() {
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
 
   // modal
-  const [isOpen, setIsOpen] = useState(false);
+  const [showUserAgree, setShowUserAgree] = useState(false);
+  const [showNickname, setShowNickname] = useState(false);
 
   useEffect(() => {
     if (accessToken && refreshToken) {
@@ -39,9 +41,14 @@ export default function LoginView() {
     const token = localStorage.getItem('refreshToken');
     if (token) {
       setIsLoggined(true);
-      setIsOpen(true);
+      setShowUserAgree(true);
     }
   }, []);
+
+  const handleAgreeConfirm = () => {
+    setShowNickname(true);
+    setShowUserAgree(false);
+  };
 
   // is-agreed api
   const { isAgreed, isAgreedLoading } = useMemberQueries();
@@ -74,7 +81,8 @@ export default function LoginView() {
           </div>
         </div>
       )}
-      {isOpen && <Agree />}
+      {showUserAgree && <UserAgree handleAllAgreeConfirm={handleAgreeConfirm} />}
+      {showNickname && <Nickname />}
     </>
   );
 }

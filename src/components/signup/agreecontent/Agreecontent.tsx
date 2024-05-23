@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ServiceCheckContent = () => {
   return (
-    <div className="h-[200px] w-[400px] overflow-y-scroll">
+    <div className="h-[246px] w-[370px] overflow-y-scroll m-[10px]">
       <h1>서비스 이용 약관 내용</h1>
       <div>
         제1조(목적등) ① 롤문철 인터넷 회원 약관(이하 "본 약관" 이라 합니다)은 이용자가 롤문철에서
@@ -18,14 +18,14 @@ export const ServiceCheckContent = () => {
 };
 export const PrivateInfoCheckContent = () => {
   return (
-    <div className="h-[200px] w-[400px] overflow-y-scroll">
+    <div className="h-[246px] w-[370px] overflow-y-scroll m-[10px]">
       <div>개인정보 처리방침 약관 내용 ~~~~</div>
     </div>
   );
 };
 export const AdvertiseCheckContent = () => {
   return (
-    <div className="h-[200px] w-[400px] overflow-y-scroll">
+    <div className="h-[246px] w-[370px] overflow-y-scroll m-[10px]">
       <div>마케팅 약관 내용 ~~~~</div>
     </div>
   );
