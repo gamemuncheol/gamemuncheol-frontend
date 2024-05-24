@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
 import { GoogleLogin, AppleLogin, UserAgree, Nickname } from '@/components/index';
+import { usePatchAgree } from '@/services/mutations/member';
 
 export default function LoginView() {
   const router = useRouter();
@@ -41,17 +42,19 @@ export default function LoginView() {
     }
   }, []);
 
+  // is-agreed api
+  const { isAgreed, isAgreedLoading } = useMemberQueries();
+  const { mutate: patchAgree } = usePatchAgree();
+
   const handleAgreeConfirm = () => {
-    setShowNickname(true);
+    patchAgree();
     setShowUserAgree(false);
   };
 
-  // is-agreed api
-  const { isAgreed, isAgreedLoading } = useMemberQueries();
-
   useEffect(() => {
     if (isAgreed) {
-      router.push('/main');
+      setShowUserAgree(false);
+      setShowNickname(true);
     }
   }, [isAgreed]);
 
