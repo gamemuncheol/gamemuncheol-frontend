@@ -2,17 +2,13 @@
 
 import Image from 'next/image';
 import loginlogo from '@/assets/login/loginlogo.svg';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-
-import GoogleLogin from '../googlelogin/Googlelogin';
-import AppleLogin from '../applelogin/Applelogin';
 
 import useLoginStore from '@/store/useMemberStore';
 import { useMemberQueries } from '@/services/queries/member';
-import UserAgree from '@/components/signup/useragree/UserAgree';
-import Nickname from '@/components/signup/nickname/Nickname';
+import { GoogleLogin, AppleLogin, UserAgree, Nickname } from '@/components/index';
+
 export default function LoginView() {
   const router = useRouter();
   const params = useSearchParams();
@@ -52,6 +48,7 @@ export default function LoginView() {
 
   // is-agreed api
   const { isAgreed, isAgreedLoading } = useMemberQueries();
+
   useEffect(() => {
     if (isAgreed) {
       router.push('/main');
