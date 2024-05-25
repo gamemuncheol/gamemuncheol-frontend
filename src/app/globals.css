@@ -139,3 +139,15 @@
     line-height: 14px;
   }
 }
+
+input {
+  margin: 0;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+input:focus {
+  outline: none;
+}

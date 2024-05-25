@@ -33,6 +33,7 @@ const config: Config = {
       fontcolor03: '#575757',
       'primary-font-color': '#575757',
       disablePurple: '#BFB4F1',
+      warnColor: '#F22828',
     },
 
     fontFamily: {
