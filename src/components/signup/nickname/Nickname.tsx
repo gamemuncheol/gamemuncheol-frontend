@@ -1,5 +1,5 @@
-import { Modal } from '@/components';
-import Input from '@/components/@common/input/Input';
+import { Input, Modal } from '@/components';
+import { useNameCheck } from '@/services/queries/member';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -16,9 +16,15 @@ const Nickname = () => {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e?: React.FormEvent) => {
+  const { data: isNameAvailable, refetch } = useNameCheck(name, name !== '');
+  useEffect(() => {
+    if (name !== '') {
+      refetch();
+    }
+  });
+  const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-
+    console.log(name);
     // 닉네임 patch api
   };
 
@@ -42,8 +48,9 @@ const Nickname = () => {
               placeholder="사용하실 닉네임을 입력해주세요."
             />
             <div className=" border-b-[1px] border-b-black300"></div>
-            {/* 닉네임 중복확인 api 추가 시 수정 예정 */}
-            {/* <div className="body05R text-warnColor pt-4">이미 등록된 아이디(이메일)입니다.</div> */}
+            {isNameAvailable !== undefined && isNameAvailable && (
+              <div className="body05R text-warnColor pt-4">이미 등록된 닉네임입니다.</div>
+            )}
           </div>
         </div>
       </Modal>

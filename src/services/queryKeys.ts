@@ -1,6 +1,8 @@
 const memberKeys = {
-  isagree: ['data'],
-  patchagree: ['data'],
+  isagree: ['isagree'],
+  patchagree: ['agree'],
+  changeNickname: ['nickname'],
+  checkNickame: ['checkNickname'],
 };
 
 export { memberKeys };
