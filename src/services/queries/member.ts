@@ -13,7 +13,7 @@ export const useMemberQueries = () => {
     queryKey: [memberKeys.isagree],
 
     queryFn: async () => {
-      const { data } = await api('/privacy/is-agreed');
+      const { data } = await api('/privacy');
       console.log('is-agree:', data.data);
       return data.data;
     },
