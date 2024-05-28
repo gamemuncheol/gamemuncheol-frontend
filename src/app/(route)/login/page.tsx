@@ -5,7 +5,7 @@ import LoginView from '@/components/login/loginview/LoginView';
 
 export default function Login() {
   return (
-    <div className="h-screen bg-login-bg flex flex-col">
+    <div className="h-screen w-screen bg-cover bg-login-bg flex flex-col">
       {/* <Video src={bgvideo} /> */}
       <div className="flex flex-1 flex-col justify-center items-center">
         <LoginView />

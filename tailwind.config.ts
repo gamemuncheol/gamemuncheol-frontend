@@ -32,6 +32,8 @@ const config: Config = {
       fontcolor02: '#404040',
       fontcolor03: '#575757',
       'primary-font-color': '#575757',
+      disablePurple: '#BFB4F1',
+      warnColor: '#F22828',
     },
 
     fontFamily: {
@@ -44,8 +46,7 @@ const config: Config = {
       backgroundImage: {
         'login-bg': "url('/login/bgtemp.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
