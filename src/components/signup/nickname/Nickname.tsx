@@ -1,4 +1,5 @@
 import { Input, Modal } from '@/components';
+import { usePatchNickname } from '@/services/mutations/member';
 import { useNameCheck } from '@/services/queries/member';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -16,17 +17,24 @@ const Nickname = () => {
     setName(e.target.value);
   };
 
-  const { data: isNameAvailable, refetch } = useNameCheck(name, name !== '');
+  const { data: notNameAvailable, refetch } = useNameCheck(name, name !== '');
+  const { mutate: patchNickname, isSuccess, isError, error } = usePatchNickname();
+
   useEffect(() => {
     if (name !== '') {
       refetch();
     }
-  });
+  }, [name, refetch]);
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     console.log(name);
-    // 닉네임 patch api
+    patchNickname(name);
   };
+  useEffect(() => {
+    if (isSuccess) {
+      router.push('/');
+    }
+  }, [isSuccess]);
 
   return (
     <div className="w-[485px] h-[465px]">
@@ -35,7 +43,7 @@ const Nickname = () => {
         subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
         onClose={handleClose}
         isDisable={true}
-        canRight={name == '' ? false : true}
+        canRight={name !== '' && !notNameAvailable}
         leftButton={{ text: '취소', onClick: handleClose }}
         rightButton={{ text: '확인', onClick: handleSubmit }}
       >
@@ -48,7 +56,7 @@ const Nickname = () => {
               placeholder="사용하실 닉네임을 입력해주세요."
             />
             <div className=" border-b-[1px] border-b-black300"></div>
-            {isNameAvailable !== undefined && isNameAvailable && (
+            {notNameAvailable !== undefined && notNameAvailable && (
               <div className="body05R text-warnColor pt-4">이미 등록된 닉네임입니다.</div>
             )}
           </div>
