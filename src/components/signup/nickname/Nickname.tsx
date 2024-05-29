@@ -18,7 +18,7 @@ const Nickname = () => {
   };
 
   const { data: notNameAvailable, refetch } = useNameCheck(name, name !== '');
-  const { mutate: patchNickname, isSuccess, isError, error } = usePatchNickname();
+  const { mutate: patchNickname, isSuccess } = usePatchNickname(name);
 
   useEffect(() => {
     if (name !== '') {
@@ -27,9 +27,9 @@ const Nickname = () => {
   }, [name, refetch]);
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    console.log(name);
-    patchNickname(name);
+    patchNickname();
   };
+
   useEffect(() => {
     if (isSuccess) {
       router.push('/');

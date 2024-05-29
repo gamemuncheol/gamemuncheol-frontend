@@ -6,9 +6,9 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import useLoginStore from '@/store/useMemberStore';
-import { useMemberQueries } from '@/services/queries/member';
 import { GoogleLogin, AppleLogin, UserAgree, Nickname } from '@/components/index';
 import { usePatchAgree } from '@/services/mutations/member';
+import { useIsAgree } from '@/services/queries/member';
 
 export default function LoginView() {
   const router = useRouter();
@@ -43,7 +43,7 @@ export default function LoginView() {
   }, []);
 
   // is-agreed api
-  const { isAgreed, isAgreedLoading } = useMemberQueries();
+  const { data: isAgreed, isLoading: isAgreedLoading } = useIsAgree(isLoggined);
   const { mutate: patchAgree } = usePatchAgree();
 
   const handleAgreeConfirm = () => {

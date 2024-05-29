@@ -1,8 +1,4 @@
-const memberKeys = {
-  isagree: ['isagree'],
-  patchagree: ['agree'],
-  changeNickname: ['nickname'],
-  checkNickame: ['checkNickname'],
+export const memberKeys = {
+  agree: ['agree'] as const,
+  nickname: (name: string) => ['nickname', name],
 };
-
-export { memberKeys };
