@@ -1,34 +1,45 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../api';
 import { memberKeys } from '../queryKeys';
 
-const patchAgree = async () => {
-  const response = await api.patch('/privacy');
-  return response.data;
+const memberService = {
+  patchAgree: async () => {
+    const response = await api.patch('/privacy');
+    return response.data.data;
+  },
+  patchNickname: async (name: string) => {
+    const response = await api.patch(`/api/member/nickname/${name}`);
+    return response.data.data;
+  },
 };
 
-const usePatchAgree = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: patchAgree,
+const memberMutationOptions = {
+  patchAgree: (queryClient: QueryClient) => ({
+    mutationFn: () => memberService.patchAgree(),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [memberKeys.patchagree],
+        queryKey: memberKeys.agree,
         exact: true,
       });
     },
-  });
+  }),
+  checkNickname: (name: string, queryClient: QueryClient) => ({
+    mutationFn: () => memberService.patchNickname(name),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: memberKeys.nickname(name),
+        exact: true,
+      });
+    },
+  }),
 };
 
-const patchNickname = async (name: string) => {
-  const response = await api.patch(`/api/member/nickname/${name}`);
-  return response.data.data;
-};
+export function usePatchAgree() {
+  const queryClient = useQueryClient();
+  return useMutation(memberMutationOptions.patchAgree(queryClient));
+}
 
-const usePatchNickname = () => {
-  return useMutation({
-    mutationFn: patchNickname,
-  });
-};
-export { usePatchAgree, usePatchNickname };
+export function usePatchNickname(name: string) {
+  const queryClient = useQueryClient();
+  return useMutation(memberMutationOptions.checkNickname(name, queryClient));
+}

@@ -4,14 +4,11 @@ const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
-const getToken = () => localStorage.getItem('accessToken');
-const getRefreshToken = () => localStorage.getItem('refreshToken');
-
 // 요청 interceptor
 api.interceptors.request.use((config) => {
-  const token = getToken();
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`;
+  const accesstoken = localStorage.getItem('accessToken');
+  if (accesstoken) {
+    config.headers['Authorization'] = `Bearer ${accesstoken}`;
   }
   return config;
 });
@@ -27,13 +24,10 @@ api.interceptors.response.use(
     if (statusCode === 401 && !originalRequest._retry) {
       try {
         // refresh token으로 new access token 요청하기
-        const rToken = getRefreshToken();
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/open-api/member/renew`,
-          {
-            refreshToken: rToken,
-          },
-        );
+        const rToken = localStorage.getItem('refreshToken');
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/open-api/member/renew`, {
+          refreshToken: rToken,
+        });
         const { accessToken, refreshToken } = res.data.data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
@@ -43,6 +37,8 @@ api.interceptors.response.use(
         return api(originalRequest); // 원래 요청 다시 시도
       } catch (refreshError) {
         console.error('Unable to refresh token:', refreshError);
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('accessToken');
         return Promise.reject(refreshError);
       }
     }
