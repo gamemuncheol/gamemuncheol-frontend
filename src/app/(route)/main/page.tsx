@@ -10,7 +10,7 @@ import VideoContainerLayout from './layout';
 import Profile from '@/components/main/components/profile/Profile';
 import Thumbnail from '@/components/main/components/thumbnail/Thumbnail';
 import { Graph } from '@/components/main/components/graph/Graph';
-import { useMainQueries } from '@/services/queries/main/main';
+import { useMainQueries } from '@/services/queries/main';
 
 export default function Main() {
   const { mainListData, mainListLoading } = useMainQueries();
@@ -42,10 +42,7 @@ export default function Main() {
           <article className="flex flex-row gap-5 flex-wrap ">
             {mainListData?.slice(0, 5).map((item) => {
               return (
-                <div
-                  key={item.id}
-                  className="w-[26.5rem] flex flex-col overflow-hidden"
-                >
+                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={item.member.picture ?? MainBonfire} />
 
@@ -57,15 +54,8 @@ export default function Main() {
                     </div>
                   </div>
 
-                  <div
-                    style={{ width: 424, height: 228 }}
-                    className="relative bg-mainPurple z-2"
-                  >
-                    <Thumbnail
-                      width={0}
-                      height={0}
-                      src={item.thumbnailUrl ?? MainLoudspeaker}
-                    />
+                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
+                    <Thumbnail width={0} height={0} src={item.thumbnailUrl ?? MainLoudspeaker} />
                   </div>
 
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
@@ -99,10 +89,7 @@ export default function Main() {
           <article className="flex flex-row gap-5 flex-wrap ">
             {mainListData?.slice(0, 5).map((item) => {
               return (
-                <div
-                  key={item.id}
-                  className="w-[26.5rem] flex flex-col overflow-hidden"
-                >
+                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={MainBonfire} />
 
@@ -114,10 +101,7 @@ export default function Main() {
                     </div>
                   </div>
 
-                  <div
-                    style={{ width: 424, height: 228 }}
-                    className="relative bg-mainPurple z-2"
-                  >
+                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
                     <Thumbnail width={0} height={0} src={MainLoudspeaker} />
                   </div>
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
@@ -151,10 +135,7 @@ export default function Main() {
           <article className="flex flex-row gap-5 flex-wrap ">
             {mainListData?.slice(0, 5).map((item) => {
               return (
-                <div
-                  key={item.id}
-                  className="w-[26.5rem] flex flex-col overflow-hidden"
-                >
+                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
                     <Profile src={MainBonfire} />
 
@@ -166,10 +147,7 @@ export default function Main() {
                     </div>
                   </div>
 
-                  <div
-                    style={{ width: 424, height: 228 }}
-                    className="relative bg-mainPurple z-2"
-                  >
+                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
                     <Thumbnail width={0} height={0} src={MainLoudspeaker} />
                   </div>
                   <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
