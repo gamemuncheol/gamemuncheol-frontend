@@ -5,13 +5,11 @@ import { MainListType } from '@/types/main-type';
 import { useQuery } from '@tanstack/react-query';
 
 export const useMainQueries = () => {
-  const { data: mainListData, isLoading: mainListLoading } = useQuery<
-    MainListType[]
-  >({
+  const { data: mainListData, isLoading: mainListLoading } = useQuery<MainListType[]>({
     queryKey: ['key'],
 
     queryFn: async () => {
-      const { data } = await api('/post/page/new');
+      const { data } = await api('/open-api/post/page/new');
       return data?.data?.data;
     },
   });
