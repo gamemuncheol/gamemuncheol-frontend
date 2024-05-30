@@ -13,11 +13,11 @@ import { Graph } from '@/components/main/components/graph/Graph';
 import { useMainQueries } from '@/services/queries/main';
 
 export default function Main() {
-  const { mainListData, mainListLoading } = useMainQueries();
+  // const { mainListData, mainListLoading } = useMainQueries();
 
-  if (mainListLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (mainListLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <ul>
@@ -40,7 +40,7 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item) => {
+            {/* {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
@@ -63,7 +63,7 @@ export default function Main() {
                   <span className="mt-4">{item?.content ?? ''}</span>
                 </div>
               );
-            })}
+            })} */}
           </article>
         </VideoContainerLayout>
       </li>
@@ -87,7 +87,7 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item) => {
+            {/* {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
@@ -109,7 +109,7 @@ export default function Main() {
                   <span className="mt-4">{item.content}</span>
                 </div>
               );
-            })}
+            })} */}
           </article>
         </VideoContainerLayout>
       </li>
@@ -133,7 +133,7 @@ export default function Main() {
           }}
         >
           <article className="flex flex-row gap-5 flex-wrap ">
-            {mainListData?.slice(0, 5).map((item) => {
+            {/* {mainListData?.slice(0, 5).map((item) => {
               return (
                 <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
                   <div className="flex flex-row gap-[0.375rem]">
@@ -155,7 +155,7 @@ export default function Main() {
                   <span className="mt-4">{item.content}</span>
                 </div>
               );
-            })}
+            })} */}
           </article>
         </VideoContainerLayout>
       </li>
