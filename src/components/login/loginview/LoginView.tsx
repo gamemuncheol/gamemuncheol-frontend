@@ -26,10 +26,12 @@ export default function LoginView() {
   const { data: isAgreed, isLoading: isAgreedLoading } = useIsAgree(accessToken ? true : false);
 
   useEffect(() => {
-    if (!isAgreed) {
-      router.push('/signup');
-    } else {
-      router.push('/main');
+    if (isLoggined) {
+      if (!isAgreed) {
+        router.push('/signup');
+      } else {
+        router.push('/main');
+      }
     }
   }, [isAgreed]);
 
