@@ -6,22 +6,28 @@ import menu from '@/assets/menu/Menu.svg';
 import logoText from '@/assets/logo/GamemuncheolTextLogo.svg';
 import useLoginStore from '@/store/useMemberStore';
 import { useRouter } from 'next/navigation';
-import { TempProfile } from '@/assets';
+import { useCookies } from 'react-cookie';
 
 export default function Header() {
   const router = useRouter();
   const isLoggined = useLoginStore((state) => state.isLoggined);
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
+  const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
 
   useEffect(() => {
-    const token = localStorage.getItem('refreshToken');
-    if (token) {
+    if (cookies.refreshToken) {
       setIsLoggined(true);
     }
   }, []);
 
   const clickLogin = () => {
     router.push('/login');
+  };
+
+  const clickLogout = () => {
+    setIsLoggined(false);
+    removeCookie('refreshToken');
+    localStorage.removeItem('accessToken');
   };
   return (
     <header className="w-full h-[3.75rem] flex justify-between items-center sticky bg-white top-0  z-10 ">
@@ -64,15 +70,10 @@ export default function Header() {
       </div>
 
       {isLoggined ? (
-        <div className="w-[40px] h-[40px] rounded-[40px]">
-          <Image
-            priority
-            className="object-fill rounded-[40px] w-[100%] h-[100%]"
-            src={TempProfile}
-            width={100}
-            height={100}
-            alt="롤문철"
-          />
+        <div className="border-[1px] border-mainPurple py-[6px] px-[14px] rounded-[24px]">
+          <div className="text-mainPurple body05R cursor-pointer" onClick={clickLogout}>
+            로그아웃
+          </div>
         </div>
       ) : (
         <div className="border-[1px] border-mainPurple py-[6px] px-[14px] rounded-[24px]">
