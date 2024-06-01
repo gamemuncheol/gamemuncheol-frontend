@@ -13,7 +13,7 @@ export const LayoutProvider = ({
   const pathname = usePathname() || '';
 
   const CommonHideComponent = () => {
-    const pagesToHide = ['/login'];
+    const pagesToHide = ['/login', '/signup'];
     return pagesToHide.includes(pathname);
   };
 
