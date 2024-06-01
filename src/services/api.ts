@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
@@ -15,12 +14,12 @@ api.interceptors.request.use((config) => {
 });
 
 // 응답 interceptor
-const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
 api.interceptors.response.use(
   (response) => {
     return response;
   },
   async (error) => {
+    const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
     const statusCode = error.response?.status;
     const originalRequest = error.config; // 원래요청
     if (statusCode === 401 && !originalRequest._retry) {
