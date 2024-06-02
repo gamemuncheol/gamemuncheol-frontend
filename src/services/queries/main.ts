@@ -9,7 +9,7 @@ export const useMainQueries = () => {
     queryKey: ['key'],
 
     queryFn: async () => {
-      const { data } = await api('/open-api/post/page/new');
+      const { data } = await api('/open-api/posts/page/new');
       return data?.data?.data;
     },
   });

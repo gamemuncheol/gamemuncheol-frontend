@@ -10,7 +10,7 @@ const memberService = {
     return response.data.data;
   },
   getCheckNickname: async (name: string) => {
-    const response = await api.get(`/api/member/nickname/${name}`);
+    const response = await api.get(`/api/members/nickname/${name}`);
     return response.data.data;
   },
 };

@@ -8,7 +8,7 @@ const memberService = {
     return response.data.data;
   },
   patchNickname: async (name: string) => {
-    const response = await api.patch(`/api/member/nickname/${name}`);
+    const response = await api.patch(`/api/members/nickname/${name}`);
     return response.data.data;
   },
 };
