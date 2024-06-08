@@ -38,6 +38,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-next", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:9.1.0"],\
           ["eslint-plugin-prettier", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:5.1.3"],\
+          ["husky", "npm:9.0.11"],\
           ["next", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:14.1.4"],\
           ["postcss", "npm:8.4.38"],\
           ["prettier", "npm:3.2.5"],\
@@ -2639,6 +2640,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-next", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:9.1.0"],\
           ["eslint-plugin-prettier", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:5.1.3"],\
+          ["husky", "npm:9.0.11"],\
           ["next", "virtual:a7ee00610a8e7e227045cf043d1629ca8bb479469b79d846783455532afc1de5dbbc5576391a68279f5f1155bae96274a7acaa6b84712a1981699a793bf5b0d8#npm:14.1.4"],\
           ["postcss", "npm:8.4.38"],\
           ["prettier", "npm:3.2.5"],\
@@ -2889,6 +2891,15 @@ const RAW_RUNTIME_STATE =
           ["https-proxy-agent", "npm:7.0.4"],\
           ["agent-base", "npm:7.1.0"],\
           ["debug", "virtual:1ff4b5f90832ba0a9c93ba1223af226e44ba70c1126a3740d93562b97bc36544e896a5e95908196f7458713e6a6089a34bfc67362fc6df7fa093bd06c878be47#npm:4.3.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["husky", [\
+      ["npm:9.0.11", {\
+        "packageLocation": "../../../.yarn/berry/cache/husky-npm-9.0.11-227bb1e4e4-10c0.zip/node_modules/husky/",\
+        "packageDependencies": [\
+          ["husky", "npm:9.0.11"]\
         ],\
         "linkType": "HARD"\
       }]\
