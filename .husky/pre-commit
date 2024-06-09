@@ -1,0 +1,12 @@
+#!/bin/sh
+# 해당 커밋에 포함된 파일 이름을 변수에 보관
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+[ -z "$FILES" ] && exit 0
+
+# Prettier 실행
+echo "$FILES" | xargs yarn prettier --ignore-unknown --write
+
+# Prettier로 formatting된 결과를을 commit에 다시 추가
+echo "$FILES" | xargs git add
+
+exit 0
