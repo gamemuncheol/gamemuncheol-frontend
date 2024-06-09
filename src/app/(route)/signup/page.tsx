@@ -1,14 +1,12 @@
 import Footer from '@/components/@common/footer/Footer';
-import LoginView from '@/components/login/loginview/LoginView';
-// import Video from 'next-video';
-// import bgvideo from '/videos/loginbg.mp4?thumbnailTime=0';
+import SignupView from '@/components/signup/signupview/SignupView';
 
-export default function Login() {
+export default function Signup() {
   return (
     <div className="h-screen w-screen bg-cover bg-login-bg flex flex-col">
       {/* <Video src={bgvideo} /> */}
       <div className="flex flex-1 flex-col justify-center items-center">
-        <LoginView />
+        <SignupView />
       </div>
       <div className="sticky bottom-0">
         <Footer use="login" />
