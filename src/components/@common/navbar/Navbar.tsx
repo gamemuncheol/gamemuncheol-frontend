@@ -1,12 +1,13 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
 import { navItem } from './data/navList';
+import Register from '@/components/main/register/Register';
 
 export default function Navbar() {
-  const [registerModal, setRegisterModal] = useState(false)
+  const [registerModal, setRegisterModal] = useState(false);
   return (
-    <nav className="sticky left-0 h-screen w-[6.5rem] flex flex-col justify-between">
+    <nav className="sticky left-0 flex h-screen w-[6.5rem] flex-col justify-between">
       <ul className="flex flex-col items-center justify-center">
         {navItem.map((item) => {
           return (
@@ -22,8 +23,14 @@ export default function Navbar() {
           );
         })}
         {/* 임시 등록 버튼 */}
-        <li onClick={()=>{setRegisterModal(true)}}>등록</li> 
-        
+        <li
+          onClick={() => {
+            setRegisterModal(true);
+          }}
+        >
+          등록
+        </li>
+        {registerModal && <Register />}
       </ul>
     </nav>
   );
