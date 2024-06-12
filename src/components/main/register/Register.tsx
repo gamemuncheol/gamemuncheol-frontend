@@ -13,6 +13,7 @@ const Register = () => {
         onClose={tempClick}
         leftButton={{ text: '취소', onClick: tempClick }}
         rightButton={{ text: '다음', onClick: tempClick }}
+        width="800px"
       >
         <div>searchbar</div>
       </Modal>
