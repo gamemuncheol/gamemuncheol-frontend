@@ -30,9 +30,9 @@ export default function Header() {
     localStorage.removeItem('accessToken');
   };
   return (
-    <header className="w-full h-[3.75rem] flex justify-between items-center sticky bg-white top-0  z-10 ">
-      <div className="flex items-center ml-10 gap-5">
-        <div className="flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-black100 rounded-lg">
+    <header className="z-5 sticky top-0 flex h-[3.75rem] w-full items-center justify-between bg-white">
+      <div className="ml-10 flex items-center gap-5">
+        <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg hover:bg-black100">
           <Image
             style={{ width: 16, height: 12 }}
             width={16}
@@ -45,7 +45,14 @@ export default function Header() {
         </div>
 
         <div className="flex gap-1.5">
-          <Image priority src={logo} width={40} height={38} placeholder="empty" alt="롤문철" />
+          <Image
+            priority
+            src={logo}
+            width={40}
+            height={38}
+            placeholder="empty"
+            alt="롤문철"
+          />
 
           <Image
             style={{ width: 76, height: 38 }}
@@ -70,14 +77,20 @@ export default function Header() {
       </div>
 
       {isLoggined ? (
-        <div className="border-[1px] border-mainPurple py-[6px] px-[14px] rounded-[24px]">
-          <div className="text-mainPurple body05R cursor-pointer" onClick={clickLogout}>
+        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
+          <div
+            className="body05R cursor-pointer text-mainPurple"
+            onClick={clickLogout}
+          >
             로그아웃
           </div>
         </div>
       ) : (
-        <div className="border-[1px] border-mainPurple py-[6px] px-[14px] rounded-[24px]">
-          <div className="text-mainPurple body05R cursor-pointer" onClick={clickLogin}>
+        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
+          <div
+            className="body05R cursor-pointer text-mainPurple"
+            onClick={clickLogin}
+          >
             로그인
           </div>
         </div>

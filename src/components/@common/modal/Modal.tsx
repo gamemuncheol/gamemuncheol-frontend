@@ -13,7 +13,7 @@ const Modal = ({
   width = 'auto',
 }: ModalProps) => {
   return (
-    <div className="fixed inset-0 flex w-[100%] items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-10 flex w-[100%] items-center justify-center bg-black bg-opacity-50">
       <div className="rounded-3xl bg-white p-4" style={{ width: width }}>
         <div className="flex flex-row justify-between border-b-[1px] border-b-black300 pb-2 pt-[10px]">
           <div className="flex flex-col gap-2">
