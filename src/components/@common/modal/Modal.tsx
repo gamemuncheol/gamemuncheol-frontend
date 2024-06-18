@@ -38,7 +38,7 @@ const Modal = ({
         </div>
 
         <div>{children}</div>
-        <div className="flex h-[40px] flex-row justify-between">
+        <div className="flex h-[40px] flex-row justify-evenly">
           <div
             className="flex w-[48%] cursor-pointer items-center justify-center bg-black500"
             onClick={leftButton.onClick}
