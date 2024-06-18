@@ -2,8 +2,9 @@ import Modal from '@/components/@common/modal/Modal';
 import React from 'react';
 import Image from 'next/image';
 
+// () => void
 import { CircleInfo, TempInformation, Path } from '@/assets/index';
-const Register = () => {
+const Register = ({ closeModal }: any) => {
   const tempClick = () => {
     console.log('click');
   };
@@ -13,8 +14,11 @@ const Register = () => {
         title="전적입력을 위해 게임ID를 입력해 주세요."
         subtitle="롤문철이 명쾌하게 판단해드려요."
         onClose={tempClick}
-        leftButton={{ text: '취소', onClick: tempClick }}
+        leftButton={{ text: '취소', onClick: closeModal }}
         rightButton={{ text: '다음', onClick: tempClick }}
+        isPage={true}
+        pageN="1"
+        pageM="5"
         width="700px"
       >
         <div className="flex flex-col items-center p-5">

@@ -20,7 +20,11 @@ export interface ModalProps {
   };
 
   isDisable?: boolean; // right 버튼이 disable 되는지 여부
-  canRight?: boolean; // isDisable일 때, canRight가 false면 disable, true면 버튼 클릭 가능\
+  canRight?: boolean; // isDisable일 때, canRight가 false면 disable, true면 버튼 클릭 가능
+
+  isPage?: boolean; // page 여부
+  pageN?: string; // page N/M
+  pageM?: string;
 
   width?: string;
 }

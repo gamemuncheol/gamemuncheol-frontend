@@ -10,6 +10,9 @@ const Modal = ({
   rightButton,
   isDisable,
   canRight,
+  isPage,
+  pageN,
+  pageM,
   width = 'auto',
 }: ModalProps) => {
   return (
@@ -20,10 +23,20 @@ const Modal = ({
             <div className="title04B">{title}</div>
             <div className="body04R text-fontcolor03">{subtitle}</div>
           </div>
-          <div className="cursor-pointer" onClick={onClose}>
-            <Image width={32} height={32} priority src={xbutton} alt="x" />
+          <div className="flex flex-row items-center gap-2">
+            {isPage && (
+              <div className="text-black300">
+                <div>
+                  {pageN}/{pageM}
+                </div>
+              </div>
+            )}
+            <div className="cursor-pointer" onClick={onClose}>
+              <Image width={32} height={32} priority src={xbutton} alt="x" />
+            </div>
           </div>
         </div>
+
         <div>{children}</div>
         <div className="flex h-[40px] flex-row justify-between">
           <div
