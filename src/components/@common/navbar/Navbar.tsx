@@ -6,6 +6,9 @@ import Register from '@/components/main/register/Register';
 
 export default function Navbar() {
   const [registerModal, setRegisterModal] = useState(false);
+  const closeRegisterModal = () => {
+    setRegisterModal(false);
+  };
   return (
     <nav className="sticky left-0 flex h-screen w-[6.5rem] flex-col justify-between">
       <ul className="flex flex-col items-center justify-center">
@@ -30,7 +33,7 @@ export default function Navbar() {
         >
           등록
         </li>
-        {registerModal && <Register />}
+        {registerModal && <Register closeModal={closeRegisterModal} />}
       </ul>
     </nav>
   );
