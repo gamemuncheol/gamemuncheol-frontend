@@ -5,9 +5,9 @@ import { navItem } from './data/navList';
 import Register from '@/components/main/register/Register';
 
 export default function Navbar() {
-  const [registerModal, setRegisterModal] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const closeRegisterModal = () => {
-    setRegisterModal(false);
+    setIsRegisterModalOpen(false);
   };
   return (
     <nav className="sticky left-0 flex h-screen w-[6.5rem] flex-col justify-between">
@@ -28,12 +28,12 @@ export default function Navbar() {
         {/* 임시 등록 버튼 */}
         <li
           onClick={() => {
-            setRegisterModal(true);
+            setIsRegisterModalOpen(true);
           }}
         >
           등록
         </li>
-        {registerModal && <Register closeModal={closeRegisterModal} />}
+        {isRegisterModalOpen && <Register closeModal={closeRegisterModal} />}
       </ul>
     </nav>
   );
