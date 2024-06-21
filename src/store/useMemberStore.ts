@@ -1,9 +1,12 @@
-import { LoginState } from '@/types/member-type';
+import { LoginState, TempUserState } from '@/types/member-type';
 import { create } from 'zustand';
 
-const useLoginStore = create<LoginState>((set) => ({
+export const useLoginStore = create<LoginState>((set) => ({
   isLoggined: false,
   setIsLoggined: (loggedInStatus) => set({ isLoggined: loggedInStatus }),
 }));
 
-export default useLoginStore;
+export const useTempUserStore = create<TempUserState>((set) => ({
+  userkey: '',
+  setUserkey: (key) => set({ userkey: key }),
+}));

@@ -5,7 +5,7 @@ import loginlogo from '@/assets/login/loginlogo.svg';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-import useLoginStore from '@/store/useMemberStore';
+import { useLoginStore, useTempUserStore } from '@/store/useMemberStore';
 import { GoogleLogin, AppleLogin } from '@/components/index';
 import { useCookies } from 'react-cookie';
 
@@ -15,18 +15,25 @@ export default function LoginView() {
 
   const accessToken = params.get('accessToken') || '';
   const refreshToken = params.get('refreshToken');
+  const tempUserKey = params.get('temporaryUserKey');
   const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
 
   //로그인 성공 여부
   const isLoggined = useLoginStore((state) => state.isLoggined);
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
 
+  const setUserkey = useTempUserStore((state) => state.setUserkey);
   // 로그인 성공 시
   useEffect(() => {
     if (accessToken && refreshToken) {
       setCookie('refreshToken', refreshToken);
       localStorage.setItem('accessToken', accessToken);
       setIsLoggined(true);
+      router.push('/main');
+    }
+    if (tempUserKey) {
+      setUserkey(tempUserKey);
+      router.push('/signup');
     }
   }, [params]);
 

@@ -3,6 +3,11 @@ export interface LoginState {
   setIsLoggined: (loggedInStatus: boolean) => void;
 }
 
+export interface TempUserState {
+  userkey: string;
+  setUserkey: (key: string) => void;
+}
+
 export type AgreementState = {
   ageCheck: boolean;
   serviceCheck: boolean;
