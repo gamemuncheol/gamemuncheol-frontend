@@ -6,29 +6,31 @@ import { useLoginStore } from '@/store/useMemberStore';
 import { UserAgree, Nickname } from '@/components/index';
 
 export default function SignupView() {
-  //로그인 성공 여부
-  const isLoggined = useLoginStore((state) => state.isLoggined);
+  // 1 step : 개인정보 동의
+  // 2 step : 닉네임 설정
 
-  // 개인정보 동의 여부
+  const [step, setStep] = useState(1);
   const [isAgreed, setIsAgreed] = useState(false);
-  // modal
-  const [showNickname, setShowNickname] = useState(false);
 
   useEffect(() => {
     if (isAgreed) {
-      setShowNickname(true);
+      setStep(2);
     }
   }, [isAgreed]);
 
   const handleAgreeConfirm = () => {
     setIsAgreed(true);
-    setShowNickname(true);
+    setStep(2);
+  };
+
+  const handleCancel = () => {
+    setStep(1);
   };
 
   return (
     <>
-      {!isAgreed && <UserAgree handleAllAgreeConfirm={handleAgreeConfirm} />}
-      {showNickname && <Nickname />}
+      {step == 1 && <UserAgree handleAllAgreeConfirm={handleAgreeConfirm} />}
+      {step == 2 && <Nickname handleCancel={handleCancel} />}
     </>
   );
 }

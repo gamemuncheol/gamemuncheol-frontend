@@ -65,7 +65,7 @@ const UserAgree = ({
     setIsListView(false);
     setContent(content);
     setButtons({
-      leftButton: { text: '취소', onClick: handleRestore },
+      leftButton: { text: '이전', onClick: handleRestore },
       rightButton: { text: '동의', onClick: () => handleAgree(key) },
     });
   };
