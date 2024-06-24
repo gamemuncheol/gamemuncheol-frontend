@@ -1,6 +1,7 @@
 import { Input, Modal } from '@/components';
-import { usePatchNickname } from '@/services/mutations/member';
+import { useSignup } from '@/services/mutations/member';
 import { useNameCheck } from '@/services/queries/member';
+import { useTempUserStore } from '@/store/useMemberStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -16,22 +17,24 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-
+  const key = useTempUserStore((state) => state.userkey);
   const { data: notNameAvailable, refetch } = useNameCheck(name, name !== '');
-  const { mutate: patchNickname, isSuccess } = usePatchNickname(name);
+  const { data: tokens, mutate: signup, isSuccess } = useSignup(key, name);
 
   useEffect(() => {
     if (name !== '') {
       refetch();
     }
   }, [name, refetch]);
+
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    patchNickname();
+    signup();
   };
 
   useEffect(() => {
     if (isSuccess) {
+      console.log('tokens', tokens);
       router.push('/');
     }
   }, [isSuccess]);

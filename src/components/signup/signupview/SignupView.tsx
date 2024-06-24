@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import { useLoginStore } from '@/store/useMemberStore';
 import { UserAgree, Nickname } from '@/components/index';
 
 export default function SignupView() {
@@ -11,12 +10,6 @@ export default function SignupView() {
 
   const [step, setStep] = useState(1);
   const [isAgreed, setIsAgreed] = useState(false);
-
-  useEffect(() => {
-    if (isAgreed) {
-      setStep(2);
-    }
-  }, [isAgreed]);
 
   const handleAgreeConfirm = () => {
     setIsAgreed(true);
