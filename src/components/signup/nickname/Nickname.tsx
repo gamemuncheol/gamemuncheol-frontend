@@ -4,6 +4,7 @@ import { useNameCheck } from '@/services/queries/member';
 import { useTempUserStore } from '@/store/useMemberStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
   const router = useRouter();
@@ -21,6 +22,8 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
   const { data: notNameAvailable, refetch } = useNameCheck(name, name !== '');
   const { data: tokens, mutate: signup, isSuccess } = useSignup(key, name);
 
+  const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
+
   useEffect(() => {
     if (name !== '') {
       refetch();
@@ -34,7 +37,8 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('tokens', tokens);
+      setCookie('refreshToken', tokens.refreshToken);
+      localStorage.setItem('accessToken', tokens.accessToken);
       router.push('/');
     }
   }, [isSuccess]);

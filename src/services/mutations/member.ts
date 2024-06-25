@@ -14,7 +14,7 @@ const memberService = {
       nickname: nickname,
     };
     const response = await api.post('/open-api/members/register', data);
-    console.log(response.data.data);
+    // console.log(response.data.data);
     return response.data.data;
   },
   patchNickname: async (name: string) => {
