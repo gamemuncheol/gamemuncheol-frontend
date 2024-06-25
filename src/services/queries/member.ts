@@ -6,7 +6,7 @@ import { memberKeys } from '../queryKeys';
 
 const memberService = {
   getCheckNickname: async (name: string) => {
-    const response = await api.get(`/api/members/nickname/${name}`);
+    const response = await api.get(`/open-api/members/nickname/${name}`);
     return response.data.data;
   },
 };
