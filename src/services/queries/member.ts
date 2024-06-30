@@ -3,6 +3,7 @@
 import api from '@/services/api';
 import { useQuery } from '@tanstack/react-query';
 import { memberKeys } from '../queryKeys';
+import { UserInfoType } from '@/types/member-type';
 
 const memberService = {
   getCheckNickname: async (name: string) => {
@@ -35,5 +36,5 @@ export function useNameCheck(name: string, isEnabled: boolean) {
 }
 
 export function useUserInfo() {
-  return useQuery(memberQueryOptions.userInfo());
+  return useQuery<UserInfoType>(memberQueryOptions.userInfo());
 }
