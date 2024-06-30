@@ -9,6 +9,12 @@ const memberService = {
     const response = await api.get(`/open-api/members/nickname/${name}`);
     return response.data.data;
   },
+
+  getUserInfo: async () => {
+    const response = await api.get('/api/members/me');
+    console.log('res:', response.data.data);
+    return response.data.data;
+  },
 };
 
 const memberQueryOptions = {
@@ -17,8 +23,17 @@ const memberQueryOptions = {
     queryFn: () => memberService.getCheckNickname(name),
     enabled: isEnabled,
   }),
+
+  userInfo: () => ({
+    queryKey: memberKeys.userinfo(),
+    queryFn: () => memberService.getUserInfo(),
+  }),
 };
 
 export function useNameCheck(name: string, isEnabled: boolean) {
   return useQuery(memberQueryOptions.checkNickname(name, isEnabled));
+}
+
+export function useUserInfo() {
+  return useQuery(memberQueryOptions.userInfo());
 }
