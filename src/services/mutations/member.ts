@@ -1,10 +1,20 @@
-import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
 import api from '../api';
 import { memberKeys } from '../queryKeys';
 
 const memberService = {
-  patchAgree: async () => {
-    const response = await api.patch('/privacy');
+  signup: async (key: string, agree: true, nickname: string) => {
+    const data = {
+      temporaryKey: key,
+      privacyAgree: true,
+      nickname: nickname,
+    };
+    const response = await api.post('/open-api/members/register', data);
+    // console.log(response.data.data);
     return response.data.data;
   },
   patchNickname: async (name: string) => {
@@ -14,11 +24,11 @@ const memberService = {
 };
 
 const memberMutationOptions = {
-  patchAgree: (queryClient: QueryClient) => ({
-    mutationFn: () => memberService.patchAgree(),
+  signup: (key: string, nickname: string, queryClient: QueryClient) => ({
+    mutationFn: () => memberService.signup(key, true, nickname),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: memberKeys.agree,
+        queryKey: memberKeys.nickname(nickname),
         exact: true,
       });
     },
@@ -34,12 +44,12 @@ const memberMutationOptions = {
   }),
 };
 
-export function usePatchAgree() {
-  const queryClient = useQueryClient();
-  return useMutation(memberMutationOptions.patchAgree(queryClient));
-}
-
 export function usePatchNickname(name: string) {
   const queryClient = useQueryClient();
   return useMutation(memberMutationOptions.checkNickname(name, queryClient));
+}
+
+export function useSignup(key: string, nickname: string) {
+  const queryClient = useQueryClient();
+  return useMutation(memberMutationOptions.signup(key, nickname, queryClient));
 }

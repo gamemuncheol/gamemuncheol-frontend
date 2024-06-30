@@ -3,7 +3,11 @@ import { AgreementState } from '@/types/member-type';
 import Modal from '@/components/@common/modal/Modal';
 import { useRouter } from 'next/navigation';
 import AgreementsList from '../agreementslist/AgreementsList';
-const UserAgree = ({ handleAllAgreeConfirm }: { handleAllAgreeConfirm: () => void }) => {
+const UserAgree = ({
+  handleAllAgreeConfirm,
+}: {
+  handleAllAgreeConfirm: () => void;
+}) => {
   const router = useRouter();
   const [checkAgree, setCheckAgree] = useState<AgreementState>({
     ageCheck: false,
@@ -28,6 +32,7 @@ const UserAgree = ({ handleAllAgreeConfirm }: { handleAllAgreeConfirm: () => voi
   };
 
   const handleClose = () => {
+    alert('회원가입 실패');
     router.push('/');
   };
 
@@ -53,22 +58,30 @@ const UserAgree = ({ handleAllAgreeConfirm }: { handleAllAgreeConfirm: () => voi
     handleRestore();
   };
   // 특정 약관 클릭시,
-  const handleContentClick = (content: ReactNode, key: keyof AgreementState) => {
+  const handleContentClick = (
+    content: ReactNode,
+    key: keyof AgreementState,
+  ) => {
     setIsListView(false);
     setContent(content);
     setButtons({
-      leftButton: { text: '취소', onClick: handleRestore },
+      leftButton: { text: '이전', onClick: handleRestore },
       rightButton: { text: '동의', onClick: () => handleAgree(key) },
     });
   };
 
   // 다음 버튼 활성화 체크
   const isDisable =
-    !checkAgree.ageCheck || !checkAgree.serviceCheck || !checkAgree.privateInfoCheck;
-  const canRight = checkAgree.ageCheck && checkAgree.serviceCheck && checkAgree.privateInfoCheck;
+    !checkAgree.ageCheck ||
+    !checkAgree.serviceCheck ||
+    !checkAgree.privateInfoCheck;
+  const canRight =
+    checkAgree.ageCheck &&
+    checkAgree.serviceCheck &&
+    checkAgree.privateInfoCheck;
 
   return (
-    <div className="w-[485px] h-[465px]">
+    <div className="h-[465px] w-[485px]">
       <Modal
         title="약관에 동의해주세요"
         subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
