@@ -86,16 +86,18 @@ export default function Header() {
       </div>
 
       {isLoggined && userinfo ? (
-        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
-          <div
-            className="body05R cursor-pointer text-mainPurple"
-            onClick={clickLogout}
-          >
-            {userinfo?.nickname}
-          </div>
+        <div className="mr-[20px]">
+          <Image
+            className="cursor-pointer rounded-[54px]"
+            width={34}
+            height={34}
+            priority
+            src={userinfo?.picture}
+            alt="profile"
+          />
         </div>
       ) : (
-        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
+        <div className="mr-[20px] rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
           <div
             className="body05R cursor-pointer text-mainPurple"
             onClick={clickLogin}
