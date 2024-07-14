@@ -18,7 +18,7 @@ export const LayoutProvider = ({
   };
 
   return (
-    <>
+    <div className="h-screen">
       {!CommonHideComponent() && <Header />}
 
       <main
@@ -29,6 +29,6 @@ export const LayoutProvider = ({
       </main>
 
       {!CommonHideComponent() && <Footer />}
-    </>
+    </div>
   );
 };
