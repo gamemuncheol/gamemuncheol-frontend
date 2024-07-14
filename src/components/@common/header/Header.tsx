@@ -7,9 +7,14 @@ import logoText from '@/assets/logo/GamemuncheolTextLogo.svg';
 import { useLoginStore } from '@/store/useMemberStore';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
+import { useUserInfo } from '@/services/queries/member';
 
 export default function Header() {
   const router = useRouter();
+
+  // 사용자 정보
+  const { data: userinfo } = useUserInfo();
+
   const isLoggined = useLoginStore((state) => state.isLoggined);
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
   const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
@@ -19,6 +24,10 @@ export default function Header() {
       setIsLoggined(true);
     }
   }, []);
+
+  useEffect(() => {
+    console.log(userinfo);
+  }, [userinfo]);
 
   const clickLogin = () => {
     router.push('/login');
@@ -76,17 +85,19 @@ export default function Header() {
         />
       </div>
 
-      {isLoggined ? (
-        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
-          <div
-            className="body05R cursor-pointer text-mainPurple"
-            onClick={clickLogout}
-          >
-            로그아웃
-          </div>
+      {isLoggined && userinfo ? (
+        <div className="mr-[20px]">
+          <Image
+            className="cursor-pointer rounded-[54px]"
+            width={34}
+            height={34}
+            priority
+            src={userinfo?.picture}
+            alt="profile"
+          />
         </div>
       ) : (
-        <div className="rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
+        <div className="mr-[20px] rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
           <div
             className="body05R cursor-pointer text-mainPurple"
             onClick={clickLogin}

@@ -14,3 +14,12 @@ export type AgreementState = {
   privateInfoCheck: boolean;
   advertiseCheck: boolean;
 };
+
+export interface UserInfoType {
+  name: string;
+  nickname: string;
+  email: string;
+  picture: string;
+  privacyAgreed: boolean;
+  score: number;
+}
