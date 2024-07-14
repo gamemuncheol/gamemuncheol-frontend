@@ -2,41 +2,28 @@
 
 import { useEffect, useState } from 'react';
 
-import useLoginStore from '@/store/useMemberStore';
 import { UserAgree, Nickname } from '@/components/index';
-import { usePatchAgree } from '@/services/mutations/member';
-import { useIsAgree } from '@/services/queries/member';
 
 export default function SignupView() {
-  //로그인 성공 여부
-  const isLoggined = useLoginStore((state) => state.isLoggined);
+  // 1 step : 개인정보 동의
+  // 2 step : 닉네임 설정
 
-  // is-agreed api
-  const { data: isAgreed, isLoading: isAgreedLoading } = useIsAgree(isLoggined);
-  const { mutate: patchAgree } = usePatchAgree();
-
-  // modal
-  const [showNickname, setShowNickname] = useState(false);
-
-  useEffect(() => {
-    if (isAgreed) {
-      setShowNickname(true);
-    }
-  }, [isAgreed]);
+  const [step, setStep] = useState(1);
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const handleAgreeConfirm = () => {
-    patchAgree();
-    setShowNickname(true);
+    setIsAgreed(true);
+    setStep(2);
   };
 
-  if (isAgreedLoading) {
-    return <div className="body01R text-white">로딩 중.. 잠시만 기다려주세요</div>;
-  }
+  const handleCancel = () => {
+    setStep(1);
+  };
 
   return (
     <>
-      {!isAgreed && <UserAgree handleAllAgreeConfirm={handleAgreeConfirm} />}
-      {showNickname && <Nickname />}
+      {step == 1 && <UserAgree handleAllAgreeConfirm={handleAgreeConfirm} />}
+      {step == 2 && <Nickname handleCancel={handleCancel} />}
     </>
   );
 }

@@ -1,10 +1,12 @@
 import { Input, Modal } from '@/components';
-import { usePatchNickname } from '@/services/mutations/member';
+import { useSignup } from '@/services/mutations/member';
 import { useNameCheck } from '@/services/queries/member';
+import { useTempUserStore } from '@/store/useMemberStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
-const Nickname = () => {
+const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
   const router = useRouter();
 
   const handleClose = () => {
@@ -16,35 +18,40 @@ const Nickname = () => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-
+  const key = useTempUserStore((state) => state.userkey);
   const { data: notNameAvailable, refetch } = useNameCheck(name, name !== '');
-  const { mutate: patchNickname, isSuccess } = usePatchNickname(name);
+  const { data: tokens, mutate: signup, isSuccess } = useSignup(key, name);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
 
   useEffect(() => {
     if (name !== '') {
       refetch();
     }
   }, [name, refetch]);
+
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    patchNickname();
+    signup();
   };
 
   useEffect(() => {
     if (isSuccess) {
+      setCookie('refreshToken', tokens.refreshToken);
+      localStorage.setItem('accessToken', tokens.accessToken);
       router.push('/');
     }
   }, [isSuccess]);
 
   return (
-    <div>
+    <div className="h-[465px] w-[485px]">
       <Modal
         title="닉네임을 입력해주세요"
         subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
         onClose={handleClose}
         isDisable={true}
         canRight={name !== '' && !notNameAvailable}
-        leftButton={{ text: '취소', onClick: handleClose }}
+        leftButton={{ text: '이전', onClick: handleCancel }}
         rightButton={{ text: '확인', onClick: handleSubmit }}
         width="485px"
       >

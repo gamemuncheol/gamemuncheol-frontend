@@ -32,6 +32,7 @@ const UserAgree = ({
   };
 
   const handleClose = () => {
+    alert('회원가입 실패');
     router.push('/');
   };
 
@@ -64,7 +65,7 @@ const UserAgree = ({
     setIsListView(false);
     setContent(content);
     setButtons({
-      leftButton: { text: '취소', onClick: handleRestore },
+      leftButton: { text: '이전', onClick: handleRestore },
       rightButton: { text: '동의', onClick: () => handleAgree(key) },
     });
   };
@@ -80,7 +81,7 @@ const UserAgree = ({
     checkAgree.privateInfoCheck;
 
   return (
-    <div>
+    <div className="h-[465px] w-[485px]">
       <Modal
         title="약관에 동의해주세요"
         subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"

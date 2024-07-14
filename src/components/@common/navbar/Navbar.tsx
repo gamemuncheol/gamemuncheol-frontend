@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
 
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { navItem } from './data/navList';
-import Register from '@/components/main/register/Register';
+import Separator from '@/components/@common/separator/Separator';
+import { navGroups } from '@/components/@common/navbar/data/navGroups';
+
 
 export default function Navbar() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -10,31 +11,41 @@ export default function Navbar() {
     setIsRegisterModalOpen(false);
   };
   return (
-    <nav className="sticky left-0 flex h-screen w-[6.5rem] flex-col justify-between">
-      <ul className="flex flex-col items-center justify-center">
-        {navItem.map((item) => {
-          return (
-            <li key={item.id}>
-              <Image
-                style={{ width: 22, height: 22 }}
-                priority
-                src={item.src}
-                placeholder="empty"
-                alt="menu"
-              />
-            </li>
-          );
-        })}
-        {/* 임시 등록 버튼 */}
-        <li
-          onClick={() => {
-            setIsRegisterModalOpen(true);
-          }}
-        >
-          등록
+    <nav className="sticky left-0 ml-10 flex h-screen flex-shrink-0 flex-grow-0 basis-10 flex-col justify-start">
+      {/* TODO: 친구 목록 */}
+      <ul className="mt-3 flex flex-col items-center justify-center space-y-3">
+        <li>
+          <p className="text-xs">친구</p>
         </li>
-        {isRegisterModalOpen && <Register closeModal={closeRegisterModal} />}
+        <Separator className="w-6" />
       </ul>
+      {navGroups.map((group, i, arr) => {
+        return (
+          <ul
+            key={i}
+            className="mt-3 flex flex-col items-center justify-center space-y-3"
+          >
+            {group.map((item) => {
+              return (
+                <li
+                  key={item.id}
+                  className="flex w-10 cursor-pointer flex-col items-center rounded-lg p-1 hover:bg-black100"
+                >
+                  <Image
+                    style={{ width: 22, height: 22 }}
+                    priority
+                    src={item.src}
+                    placeholder="empty"
+                    alt="menu"
+                  />
+                  <p className="text-xs">{item.collapseText}</p>
+                </li>
+              );
+            })}
+            {arr.length - 1 !== i ? <Separator className="w-6" /> : ''}
+          </ul>
+        );
+      })}
     </nav>
   );
 }
