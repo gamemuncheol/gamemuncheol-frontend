@@ -1,10 +1,15 @@
-import React from 'react';
-import Image from 'next/image';
 
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Separator from '@/components/@common/separator/Separator';
 import { navGroups } from '@/components/@common/navbar/data/navGroups';
 
+
 export default function Navbar() {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const closeRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
   return (
     <nav className="sticky left-0 ml-10 flex h-screen flex-shrink-0 flex-grow-0 basis-10 flex-col justify-start">
       {/* TODO: 친구 목록 */}

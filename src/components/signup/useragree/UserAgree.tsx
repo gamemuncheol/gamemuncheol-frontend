@@ -89,6 +89,7 @@ const UserAgree = ({
         leftButton={buttons.leftButton}
         rightButton={buttons.rightButton}
         {...(isListView ? { isDisable, canRight } : {})}
+        width="485px"
       >
         {isListView ? (
           <AgreementsList

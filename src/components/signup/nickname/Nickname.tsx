@@ -53,6 +53,7 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
         canRight={name !== '' && !notNameAvailable}
         leftButton={{ text: '이전', onClick: handleCancel }}
         rightButton={{ text: '확인', onClick: handleSubmit }}
+        width="485px"
       >
         <div className="flex h-[300px] w-[400px] flex-col justify-center">
           <div className="p-3">
