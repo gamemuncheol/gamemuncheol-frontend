@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className="sticky left-0 ml-10 flex h-screen flex-shrink-0 flex-grow-0 basis-10 flex-col justify-start">
       {/* TODO: 친구 목록 */}
-      <ul className="mt-3 flex flex-col items-center justify-center space-y-3">
+      <ul className="caption02 mt-3 flex flex-col items-center justify-center space-y-3">
         <li>
           <p className="text-xs">친구</p>
         </li>
@@ -33,7 +33,7 @@ export default function Navbar() {
                     placeholder="empty"
                     alt="menu"
                   />
-                  <p className="text-xs">{item.collapseText}</p>
+                  <p className="caption02 text-nowrap">{item.collapseText}</p>
                 </li>
               );
             })}
