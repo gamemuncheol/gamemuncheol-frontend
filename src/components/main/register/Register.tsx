@@ -1,4 +1,4 @@
-import Modal from '@/components/@common/modal/Modal';
+import { Modal } from '@/components/@common/modal/Modal';
 import React from 'react';
 import Image from 'next/image';
 
@@ -10,17 +10,13 @@ const Register = ({ closeModal }: any) => {
   };
   return (
     <div>
-      <Modal
-        title="전적입력을 위해 게임ID를 입력해 주세요."
-        subtitle="롤문철이 명쾌하게 판단해드려요."
-        onClose={tempClick}
-        leftButton={{ text: '취소', onClick: closeModal }}
-        rightButton={{ text: '다음', onClick: tempClick }}
-        isPage={true}
-        pageN="1"
-        pageM="5"
-        width="700px"
-      >
+      <Modal width="700px">
+        <Modal.Header
+          title="전적입력을 위해 게임ID를 입력해 주세요."
+          subtitle="롤문철이 명쾌하게 판단해드려요."
+          onClose={tempClick}
+        />
+
         <div className="flex flex-col items-center p-5">
           <div className="flex flex-col gap-4">
             <div>searchbar - 이후 추가</div>
@@ -48,6 +44,10 @@ const Register = ({ closeModal }: any) => {
             />
           </div>
         </div>
+        <Modal.Footer
+          leftButton={{ text: '취소', onClick: closeModal }}
+          rightButton={{ text: '다음', onClick: tempClick }}
+        />
       </Modal>
     </div>
   );
