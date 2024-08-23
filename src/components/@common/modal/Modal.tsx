@@ -24,20 +24,22 @@ const ModalRoot = ({ children, width = 'auto' }: ModalProps) => {
 const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ title, subtitle, children, onClose }, ref) => {
     return (
-      <div
-        ref={ref}
-        className="flex flex-row justify-between border-b-[1px] border-b-black300 pb-2 pt-[10px]"
-      >
-        <div className="flex flex-col gap-2">
-          <h2 className="title04B">{title}</h2>
-          <div className="body04R text-fontcolor03">{subtitle}</div>
+      <div>
+        <div
+          ref={ref}
+          className="flex flex-row justify-between border-b-[1px] border-b-black300 pb-2 pt-[10px]"
+        >
+          <div className="flex flex-col gap-2">
+            <h2 className="title04B">{title}</h2>
+            <div className="body04R text-fontcolor03">{subtitle}</div>
+          </div>
+          <div className="flex flex-row items-center gap-2">
+            <button className="cursor-pointer" onClick={onClose}>
+              <Image width={32} height={32} priority src={xbutton} alt="x" />
+            </button>
+          </div>
         </div>
-        <div className="flex flex-row items-center gap-2">
-          {children}
-          <button className="cursor-pointer" onClick={onClose}>
-            <Image width={32} height={32} priority src={xbutton} alt="x" />
-          </button>
-        </div>
+        {children}
       </div>
     );
   },
