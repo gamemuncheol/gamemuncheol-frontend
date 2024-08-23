@@ -6,9 +6,9 @@ interface ProgressProps {
 
 const Progress = ({ value }: ProgressProps) => {
   return (
-    <div className="h-4 w-full rounded-full border-0 border-white bg-disablePurple">
+    <div className="h-1 w-full rounded-full border-0 border-white bg-black200">
       <div
-        className="flex h-4 items-center justify-center rounded-l-full bg-mainPurple"
+        className="flex h-1 items-center justify-center rounded-l-full bg-mainPurple"
         style={{ width: `${value}%` }}
       ></div>
     </div>
