@@ -9,7 +9,7 @@ export default function Login() {
       <div className="flex flex-1 flex-col items-center justify-center">
         <LoginView />
       </div>
-      <div className="sticky bottom-0">
+      <div className="footer absolute bottom-0 w-full">
         <Footer use="login" />
       </div>
     </div>
