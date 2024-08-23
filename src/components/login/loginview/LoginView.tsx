@@ -38,7 +38,7 @@ export default function LoginView() {
   }, [params]);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="sticky flex flex-col items-center justify-center gap-6">
       <Image
         width={360}
         height={200}
