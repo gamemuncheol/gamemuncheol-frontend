@@ -6,7 +6,7 @@ export default function Login() {
   return (
     <div>
       <Background></Background>
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex h-[90vh] flex-1 flex-col items-center justify-center">
         <LoginView />
       </div>
       <div className="footer absolute bottom-0 w-full">
