@@ -3,6 +3,7 @@ export { default as Footer } from './@common/footer/Footer';
 export { Modal } from './@common/modal/Modal';
 export { default as Input } from './@common/input/Input';
 export { default as Progress } from './@common/progress/Progress';
+export { default as Skeleton } from './@common/skeleton/Skeleton';
 
 // login
 export { default as GoogleLogin } from './login/googlelogin/Googlelogin';
