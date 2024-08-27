@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { AgreementState } from '@/types/member-type';
-import Modal from '@/components/@common/modal/Modal';
+import { Modal } from '@/components/@common/modal/Modal';
 import { useRouter } from 'next/navigation';
 import AgreementsList from '../agreementslist/AgreementsList';
 const UserAgree = ({
@@ -82,15 +82,12 @@ const UserAgree = ({
 
   return (
     <div className="h-[465px] w-[485px]">
-      <Modal
-        title="약관에 동의해주세요"
-        subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
-        onClose={handleClose}
-        leftButton={buttons.leftButton}
-        rightButton={buttons.rightButton}
-        {...(isListView ? { isDisable, canRight } : {})}
-        width="485px"
-      >
+      <Modal {...(isListView ? { isDisable, canRight } : {})} width="485px">
+        <Modal.Header
+          title="약관에 동의해주세요"
+          subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
+          onClose={handleClose}
+        />
         {isListView ? (
           <AgreementsList
             checkAgree={checkAgree}
@@ -101,6 +98,10 @@ const UserAgree = ({
         ) : (
           content
         )}
+        <Modal.Footer
+          leftButton={buttons.leftButton}
+          rightButton={buttons.rightButton}
+        />
       </Modal>
     </div>
   );

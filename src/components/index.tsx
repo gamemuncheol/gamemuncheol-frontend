@@ -1,7 +1,8 @@
 // common
 export { default as Footer } from './@common/footer/Footer';
-export { default as Modal } from './@common/modal/Modal';
+export { Modal } from './@common/modal/Modal';
 export { default as Input } from './@common/input/Input';
+export { default as Progress } from './@common/progress/Progress';
 
 // login
 export { default as GoogleLogin } from './login/googlelogin/Googlelogin';

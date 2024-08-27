@@ -45,16 +45,13 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
 
   return (
     <div className="h-[465px] w-[485px]">
-      <Modal
-        title="닉네임을 입력해주세요"
-        subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
-        onClose={handleClose}
-        isDisable={true}
-        canRight={name !== '' && !notNameAvailable}
-        leftButton={{ text: '이전', onClick: handleCancel }}
-        rightButton={{ text: '확인', onClick: handleSubmit }}
-        width="485px"
-      >
+      <Modal width="485px">
+        <Modal.Header
+          title="닉네임을 입력해주세요"
+          subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
+          onClose={handleClose}
+        />
+
         <div className="flex h-[300px] w-[400px] flex-col justify-center">
           <div className="p-3">
             <Input
@@ -71,6 +68,12 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
             )}
           </div>
         </div>
+        <Modal.Footer
+          isDisable={true}
+          canRight={name !== '' && !notNameAvailable}
+          leftButton={{ text: '이전', onClick: handleCancel }}
+          rightButton={{ text: '확인', onClick: handleSubmit }}
+        />
       </Modal>
     </div>
   );
