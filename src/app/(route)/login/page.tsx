@@ -5,7 +5,7 @@ import LoginView from '@/components/login/loginview/LoginView';
 export default function Login() {
   return (
     <div>
-      <Background></Background>
+      <Background />
       <div className="flex h-[90vh] flex-1 flex-col items-center justify-center">
         <LoginView />
       </div>

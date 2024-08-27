@@ -7,22 +7,22 @@ const Background = () => {
     if (typeof window !== 'undefined') {
       setHasWindow(true);
     }
-  }, [hasWindow]);
+  }, []);
 
   return (
     <>
       {hasWindow && (
         <video
-          autoPlay={true}
-          muted={true}
-          loop={true}
+          autoPlay
+          muted
+          loop
           style={{
             width: '100vw',
             height: '100vh',
             objectFit: 'cover',
             position: 'fixed',
           }}
-          src={require('../../../../public/login/loginbg.mp4')}
+          src={'/login/loginbg.mp4'}
         />
       )}
     </>
