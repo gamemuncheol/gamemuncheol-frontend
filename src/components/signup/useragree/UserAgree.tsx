@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { AgreementState } from '@/types/member-type';
 import { Modal } from '@/components/@common/modal/Modal';
 import { useRouter } from 'next/navigation';
@@ -14,7 +14,6 @@ const UserAgree = ({
     ageCheck: false,
     serviceCheck: false,
     privateInfoCheck: false,
-    advertiseCheck: false,
   });
 
   const handleAgreeToggle = (key: keyof AgreementState) => {
@@ -28,7 +27,6 @@ const UserAgree = ({
       ageCheck: newState,
       serviceCheck: newState,
       privateInfoCheck: newState,
-      advertiseCheck: newState,
     });
   };
 
@@ -71,19 +69,14 @@ const UserAgree = ({
     });
   };
 
-  // 다음 버튼 활성화 체크
-  const isDisable =
-    !checkAgree.ageCheck ||
-    !checkAgree.serviceCheck ||
-    !checkAgree.privateInfoCheck;
   const canRight =
     checkAgree.ageCheck &&
     checkAgree.serviceCheck &&
     checkAgree.privateInfoCheck;
 
   return (
-    <div className="h-[465px] w-[485px]">
-      <Modal {...(isListView ? { isDisable, canRight } : {})} width="485px">
+    <div>
+      <Modal width="440px">
         <Modal.Header
           title="약관에 동의해주세요"
           subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
@@ -101,6 +94,8 @@ const UserAgree = ({
           content
         )}
         <Modal.Footer
+          isDisable={true}
+          canRight={canRight}
           leftButton={buttons.leftButton}
           rightButton={buttons.rightButton}
         />
