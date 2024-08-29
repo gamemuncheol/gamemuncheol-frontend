@@ -12,7 +12,6 @@ export type AgreementState = {
   ageCheck: boolean;
   serviceCheck: boolean;
   privateInfoCheck: boolean;
-  advertiseCheck: boolean;
 };
 
 export interface UserInfoType {
