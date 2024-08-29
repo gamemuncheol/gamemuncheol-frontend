@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {
   PrivateInfoCheckContent,
   ServiceCheckContent,
-} from '../agreecontent/Agreecontent';
+} from '@/constants/Agreecontent';
 import { AgreementState } from '@/types/member-type';
 
 interface AgreeListProps {
