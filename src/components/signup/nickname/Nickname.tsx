@@ -1,4 +1,4 @@
-import { Input, Modal } from '@/components';
+import { Input, Modal, Progress } from '@/components';
 import { useSignup } from '@/services/mutations/member';
 import { useNameCheck } from '@/services/queries/member';
 import { useTempUserStore } from '@/store/useMemberStore';
@@ -51,7 +51,7 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
           subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
           onClose={handleClose}
         />
-
+        <Progress value={2} max={2}></Progress>
         <div className="flex h-[300px] w-[400px] flex-col justify-center">
           <div className="p-3">
             <Input
