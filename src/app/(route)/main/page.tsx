@@ -212,7 +212,7 @@ const CardSkeleton = () => {
       <div className="flex gap-1">
         <Skeleton className="h-12 w-12 rounded-full" />
         <div className="space-y-1">
-          <Skeleton className="h-4 w-16 rounded-md" />
+          <Skeleton className="h-4 w-14 rounded-md" />
           <div className="flex items-center gap-1">
             <Skeleton className="h-4 w-14 rounded-md" />
             ·
@@ -223,23 +223,9 @@ const CardSkeleton = () => {
 
       <div className="w-[424px]">
         <Skeleton className="h-[228px]" />
-        <div className="flex">
-          <Skeleton className="from-cyan-500 to-blue-500 mt-1 h-7 w-52 bg-gradient-to-r" />
-          <Image
-            style={{ width: 24 }}
-            priority
-            width={0}
-            height={0}
-            src={Lightning}
-            sizes="100vw"
-            placeholder="empty"
-            alt="Lightning"
-          />
-          <Skeleton className="from-cyan-500 to-blue-500 mt-1 h-7 w-52 bg-gradient-to-r" />
-        </div>
+        <Skeleton className="mt-1 h-8 rounded-md" />
 
-        <Skeleton className="mt-4 h-4 rounded-md" />
-        <Skeleton className="mt-1 h-4 rounded-md" />
+        <Skeleton className="mt-4 h-8 rounded-md" />
       </div>
     </div>
   );
