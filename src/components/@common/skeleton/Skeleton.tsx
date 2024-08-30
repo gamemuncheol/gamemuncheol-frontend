@@ -9,7 +9,7 @@ interface SkeletonProps {
 const Skeleton = ({ className, ...props }: SkeletonProps) => {
   return (
     <div
-      className={cn('animate-pulse bg-black300', className)}
+      className={cn('animate-pulse bg-black200', className)}
       {...props}
     ></div>
   );
