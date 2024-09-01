@@ -12,7 +12,7 @@ import { forwardRef } from 'react';
 const ModalRoot = ({ children, width = 'auto' }: ModalProps) => {
   return (
     <Portal>
-      <div className="fixed inset-0 z-10 flex w-[100%] items-center justify-center bg-black bg-opacity-50">
+      <div className="fixed inset-0 z-10 flex w-full items-center justify-center bg-black bg-opacity-50">
         <div className="rounded-3xl bg-white p-4" style={{ width: width }}>
           <div>{children}</div>
         </div>

@@ -82,7 +82,7 @@ const UserAgree = ({
           subtitle="여러분의 개인정보와 서비스 이용권리, 잘 지켜드릴게요"
           onClose={handleClose}
         />
-        <Progress value={1} max={2}></Progress>
+        <Progress step={1} maxStep={2}></Progress>
         {isListView ? (
           <AgreementsList
             checkAgree={checkAgree}

@@ -9,7 +9,14 @@ interface InputProps {
   placeholder?: string;
 }
 
-const Input = ({ id, label, type = 'text', value, onChange, placeholder }: InputProps) => {
+const Input = ({
+  id,
+  label,
+  type = 'text',
+  value,
+  onChange,
+  placeholder,
+}: InputProps) => {
   return (
     <div className="mb-2">
       <label htmlFor={id}>{label}</label>
@@ -18,7 +25,7 @@ const Input = ({ id, label, type = 'text', value, onChange, placeholder }: Input
         type={type}
         value={value}
         onChange={onChange}
-        className="w-[100%] placeholder:{color:black400} body04M"
+        className="placeholder:{color:black400} body04M w-full"
         placeholder={placeholder}
       />
     </div>

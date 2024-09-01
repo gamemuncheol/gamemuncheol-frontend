@@ -38,7 +38,7 @@ const AgreementsList = ({
               alt="allagree"
             />
           </div>
-          <div className="body04R flex w-[100%] items-center justify-between">
+          <div className="body04R flex w-full items-center justify-between">
             <div className="flex flex-col gap-3">
               <div className="title05B">모두 동의</div>
               <div className="body05R text-fontcolor03">
@@ -64,7 +64,7 @@ const AgreementsList = ({
             alt="agecheck"
           />
         </div>
-        <div className="body04R flex w-[100%] items-center justify-between">
+        <div className="body04R flex w-full items-center justify-between">
           <div className="flex">[필수] 만 14세 이상입니다.</div>
           {/* <Image src={RightArrow} width={28} height={28} priority alt="next" /> */}
         </div>
@@ -84,7 +84,7 @@ const AgreementsList = ({
           />
         </div>
         <div
-          className="body04R flex w-[100%] cursor-pointer items-center justify-between"
+          className="body04R flex w-full cursor-pointer items-center justify-between"
           onClick={() =>
             handleContentClick(<ServiceCheckContent />, 'serviceCheck')
           }
@@ -108,7 +108,7 @@ const AgreementsList = ({
           />
         </div>
         <div
-          className="body04R flex w-[100%] cursor-pointer items-center justify-between"
+          className="body04R flex w-full cursor-pointer items-center justify-between"
           onClick={() =>
             handleContentClick(<PrivateInfoCheckContent />, 'privateInfoCheck')
           }

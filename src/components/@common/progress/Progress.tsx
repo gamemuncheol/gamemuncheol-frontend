@@ -1,12 +1,12 @@
 import React from 'react';
 
 interface ProgressProps {
-  value: number;
-  max: number;
+  step: number;
+  maxStep: number;
 }
 
-const Progress = ({ value, max }: ProgressProps) => {
-  let percent = (value / max) * 100;
+const Progress = ({ step, maxStep }: ProgressProps) => {
+  const percent = (step / maxStep) * 100;
   return (
     <div className="h-[4px] w-full rounded-[24px] border-0 border-white bg-black200">
       <div

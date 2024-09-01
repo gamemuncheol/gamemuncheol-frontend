@@ -51,7 +51,7 @@ const Nickname = ({ handleCancel }: { handleCancel: () => void }) => {
           subtitle="롤문철에서 사용할 닉네임을 입력해주세요."
           onClose={handleClose}
         />
-        <Progress value={2} max={2}></Progress>
+        <Progress step={2} maxStep={2}></Progress>
         <div className="flex h-[226px] w-[400px] flex-col justify-center">
           <div className="p-3">
             <Input
