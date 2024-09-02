@@ -4,6 +4,7 @@ import api from '@/services/api';
 import { useQuery } from '@tanstack/react-query';
 import { memberKeys } from '../queryKeys';
 import { UserInfoType } from '@/types/member-type';
+import { useLoginStore } from '@/store/useMemberStore';
 
 const memberService = {
   getCheckNickname: async (name: string) => {
@@ -25,9 +26,10 @@ const memberQueryOptions = {
     enabled: isEnabled,
   }),
 
-  userInfo: () => ({
+  userInfo: (isLoggined: boolean) => ({
     queryKey: memberKeys.userinfo(),
     queryFn: () => memberService.getUserInfo(),
+    enabled: isLoggined,
   }),
 };
 
@@ -35,6 +37,7 @@ export function useNameCheck(name: string, isEnabled: boolean) {
   return useQuery(memberQueryOptions.checkNickname(name, isEnabled));
 }
 
-export function useUserInfo() {
-  return useQuery<UserInfoType>(memberQueryOptions.userInfo());
-}
+export const useUserInfo = () => {
+  const isLoggined = useLoginStore((state) => state.isLoggined);
+  return useQuery<UserInfoType>(memberQueryOptions.userInfo(isLoggined));
+};
