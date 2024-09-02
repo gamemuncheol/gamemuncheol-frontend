@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { MainHot, MainBonfire, MainLoudspeaker } from '@/assets/';
+import { MainHot, MainBonfire, MainLoudspeaker, Lightning } from '@/assets/';
 
 import Image from 'next/image';
 
@@ -11,17 +11,14 @@ import Profile from '@/components/main/components/profile/Profile';
 import Thumbnail from '@/components/main/components/thumbnail/Thumbnail';
 import { Graph } from '@/components/main/components/graph/Graph';
 import { useMainQueries } from '@/services/queries/main';
+import { Skeleton } from '@/components';
 
 export default function Main() {
-  // const { mainListData, mainListLoading } = useMainQueries();
-
-  // if (mainListLoading) {
-  //   return <div>Loading...</div>;
-  // }
+  const { mainListData, mainListLoading } = useMainQueries();
 
   return (
     <ul>
-      <li className="flex justify-center items-center">
+      <li className="flex items-center justify-center">
         <VideoContainerLayout
           params={{
             category: 'Hot!',
@@ -39,32 +36,50 @@ export default function Main() {
             ),
           }}
         >
-          <article className="flex flex-row gap-5 flex-wrap ">
-            {/* {mainListData?.slice(0, 5).map((item) => {
-              return (
-                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
-                  <div className="flex flex-row gap-[0.375rem]">
-                    <Profile src={item.member.picture ?? MainBonfire} />
+          {mainListLoading ? (
+            <div className="flex gap-5">
+              {[...Array(3)].map((_, index) => (
+                <CardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <article className="flex flex-row flex-wrap gap-5">
+              {mainListData?.slice(0, 5).map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex w-[26.5rem] flex-col overflow-hidden"
+                  >
+                    <div className="flex flex-row gap-[0.375rem]">
+                      <Profile src={item.member.picture ?? MainBonfire} />
 
-                    <div className="p-[0.375rem]">
-                      <p>{item.member.nickname}</p>
-                      <p className="text-xs text-primary-font-color caption02">
-                        조회수 {item.viewCount}회·6시간 전
-                      </p>
+                      <div className="p-[0.375rem]">
+                        <p>{item.member.nickname}</p>
+                        <p className="caption02 text-xs text-primary-font-color">
+                          조회수 {item.viewCount}회·6시간 전
+                        </p>
+                      </div>
                     </div>
+
+                    <div
+                      style={{ width: 424, height: 228 }}
+                      className="z-2 relative bg-mainPurple"
+                    >
+                      <Thumbnail
+                        width={0}
+                        height={0}
+                        src={item.thumbnailUrl ?? MainLoudspeaker}
+                      />
+                    </div>
+
+                    <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
+
+                    <span className="mt-4">{item?.content ?? ''}</span>
                   </div>
-
-                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
-                    <Thumbnail width={0} height={0} src={item.thumbnailUrl ?? MainLoudspeaker} />
-                  </div>
-
-                  <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
-
-                  <span className="mt-4">{item?.content ?? ''}</span>
-                </div>
-              );
-            })} */}
-          </article>
+                );
+              })}
+            </article>
+          )}
         </VideoContainerLayout>
       </li>
 
@@ -86,31 +101,45 @@ export default function Main() {
             ),
           }}
         >
-          <article className="flex flex-row gap-5 flex-wrap ">
-            {/* {mainListData?.slice(0, 5).map((item) => {
-              return (
-                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
-                  <div className="flex flex-row gap-[0.375rem]">
-                    <Profile src={MainBonfire} />
+          {mainListLoading ? (
+            <div className="flex gap-5">
+              {[...Array(3)].map((_, index) => (
+                <CardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <article className="flex flex-row flex-wrap gap-5">
+              {mainListData?.slice(0, 5).map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex w-[26.5rem] flex-col overflow-hidden"
+                  >
+                    <div className="flex flex-row gap-[0.375rem]">
+                      <Profile src={MainBonfire} />
 
-                    <div className="p-[0.375rem]">
-                      <p>nickName</p>
-                      <p className="text-xs text-primary-font-color caption02">
-                        조회수 5.9만회·6시간 전
-                      </p>
+                      <div className="p-[0.375rem]">
+                        <p>nickName</p>
+                        <p className="caption02 text-xs text-primary-font-color">
+                          조회수 5.9만회·6시간 전
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
-                    <Thumbnail width={0} height={0} src={MainLoudspeaker} />
-                  </div>
-                  <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
+                    <div
+                      style={{ width: 424, height: 228 }}
+                      className="z-2 relative bg-mainPurple"
+                    >
+                      <Thumbnail width={0} height={0} src={MainLoudspeaker} />
+                    </div>
+                    <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">{item.content}</span>
-                </div>
-              );
-            })} */}
-          </article>
+                    <span className="mt-4">{item.content}</span>
+                  </div>
+                );
+              })}
+            </article>
+          )}
         </VideoContainerLayout>
       </li>
 
@@ -132,33 +161,72 @@ export default function Main() {
             ),
           }}
         >
-          <article className="flex flex-row gap-5 flex-wrap ">
-            {/* {mainListData?.slice(0, 5).map((item) => {
-              return (
-                <div key={item.id} className="w-[26.5rem] flex flex-col overflow-hidden">
-                  <div className="flex flex-row gap-[0.375rem]">
-                    <Profile src={MainBonfire} />
+          {mainListLoading ? (
+            <div className="flex gap-5">
+              {[...Array(3)].map((_, index) => (
+                <CardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <article className="flex flex-row flex-wrap gap-5">
+              {mainListData?.slice(0, 5).map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex w-[26.5rem] flex-col overflow-hidden"
+                  >
+                    <div className="flex flex-row gap-[0.375rem]">
+                      <Profile src={MainBonfire} />
 
-                    <div className="p-[0.375rem]">
-                      <p>nickName</p>
-                      <p className="text-xs text-primary-font-color caption02">
-                        조회수 5.9만회·6시간 전
-                      </p>
+                      <div className="p-[0.375rem]">
+                        <p>nickName</p>
+                        <p className="caption02 text-xs text-primary-font-color">
+                          조회수 5.9만회·6시간 전
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div style={{ width: 424, height: 228 }} className="relative bg-mainPurple z-2">
-                    <Thumbnail width={0} height={0} src={MainLoudspeaker} />
-                  </div>
-                  <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
+                    <div
+                      style={{ width: 424, height: 228 }}
+                      className="z-2 relative bg-mainPurple"
+                    >
+                      <Thumbnail width={0} height={0} src={MainLoudspeaker} />
+                    </div>
+                    <Graph teamAPercentage={'66%'} teamBPercentage={'44%'} />
 
-                  <span className="mt-4">{item.content}</span>
-                </div>
-              );
-            })} */}
-          </article>
+                    <span className="mt-4">{item.content}</span>
+                  </div>
+                );
+              })}
+            </article>
+          )}
         </VideoContainerLayout>
       </li>
     </ul>
   );
 }
+
+const CardSkeleton = () => {
+  return (
+    <div>
+      <div className="flex gap-1">
+        <Skeleton className="h-12 w-12 rounded-full" />
+        <div className="space-y-1">
+          <Skeleton className="h-4 w-14 rounded-md" />
+          <div className="flex items-center gap-1">
+            <Skeleton className="h-4 w-14 rounded-md" />
+            ·
+            <Skeleton className="h-4 w-12 rounded-md" />
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[424px]">
+        <Skeleton className="h-[228px]" />
+        <Skeleton className="mt-1 h-8 rounded-md" />
+
+        <Skeleton className="mt-4 h-8 rounded-md" />
+      </div>
+    </div>
+  );
+};
