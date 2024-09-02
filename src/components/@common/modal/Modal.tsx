@@ -12,7 +12,7 @@ import { forwardRef } from 'react';
 const ModalRoot = ({ children, width = 'auto' }: ModalProps) => {
   return (
     <Portal>
-      <div className="fixed inset-0 z-10 flex w-[100%] items-center justify-center bg-black bg-opacity-50">
+      <div className="fixed inset-0 z-10 flex w-full items-center justify-center bg-black bg-opacity-50">
         <div className="rounded-3xl bg-white p-4" style={{ width: width }}>
           <div>{children}</div>
         </div>
@@ -25,10 +25,7 @@ const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ title, subtitle, children, onClose }, ref) => {
     return (
       <div>
-        <div
-          ref={ref}
-          className="flex flex-row justify-between border-b-[1px] border-b-black300 pb-2 pt-[10px]"
-        >
+        <div ref={ref} className="flex flex-row justify-between pb-2 pt-[10px]">
           <div className="flex flex-col gap-2">
             <h2 className="title04B">{title}</h2>
             <div className="body04R text-fontcolor03">{subtitle}</div>

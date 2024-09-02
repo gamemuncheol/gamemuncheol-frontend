@@ -1,15 +1,17 @@
 import React from 'react';
 
 interface ProgressProps {
-  value: string;
+  step: number;
+  maxStep: number;
 }
 
-const Progress = ({ value }: ProgressProps) => {
+const Progress = ({ step, maxStep }: ProgressProps) => {
+  const percent = (step / maxStep) * 100;
   return (
-    <div className="h-1 w-full rounded-full border-0 border-white bg-black200">
+    <div className="h-[4px] w-full rounded-[24px] border-0 border-white bg-black200">
       <div
-        className="flex h-1 items-center justify-center rounded-l-full bg-mainPurple"
-        style={{ width: `${value}%` }}
+        className="flex h-[4px] items-center justify-center rounded-[24px] bg-mainPurple"
+        style={{ width: `${percent}%` }}
       ></div>
     </div>
   );

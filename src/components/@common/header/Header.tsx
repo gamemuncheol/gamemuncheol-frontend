@@ -97,7 +97,7 @@ export default function Header() {
           />
         </div>
       ) : (
-        <div className="mr-[20px] rounded-[24px] border-[1px] border-mainPurple px-[14px] py-[6px]">
+        <div className="mr-[20px] rounded-3xl border-[1px] border-mainPurple px-[14px] py-[6px]">
           <div
             className="body05R cursor-pointer text-mainPurple"
             onClick={clickLogin}
