@@ -3,12 +3,20 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { CircleInfo, TempInformation, Path } from '@/assets/index';
 import { modaltitles } from '@/constants/PostUpload';
+import Progress from '@/components/@common/progress/Progress';
 
 // 공통
 const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
   const [currentStep, setCurrentStep] = useState(1);
 
-  const nextStep = () => setCurrentStep(currentStep + 1);
+  const nextStep = () => {
+    if (currentStep === 3) {
+      // TODO: 게시물 등록
+      closeModal();
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
+  };
   const prevStep = () => {
     if (currentStep === 1) {
       closeModal();
@@ -25,6 +33,7 @@ const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
           subtitle="롤문철이 명쾌하게 판단해드려요."
           onClose={closeModal}
         />
+        <Progress step={currentStep} maxStep={3}></Progress>
         {currentStep === 1 && <Step1></Step1>}
         {currentStep === 2 && <Step2></Step2>}
         {currentStep === 3 && <Step3></Step3>}
