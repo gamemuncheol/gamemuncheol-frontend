@@ -7,9 +7,16 @@ import xbutton from '@/assets/common/x.svg';
 import Image from 'next/image';
 
 import Portal from '@/components/@common/portal/Portal';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 
 const ModalRoot = ({ children, width = 'auto' }: ModalProps) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <Portal>
       <div className="fixed inset-0 z-10 flex w-full items-center justify-center bg-black bg-opacity-50">
