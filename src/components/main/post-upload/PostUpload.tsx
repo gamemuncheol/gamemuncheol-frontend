@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 // () => void
 import { CircleInfo, TempInformation, Path } from '@/assets/index';
-const Register = ({ closeModal }: any) => {
+const PostUpload = ({ closeModal }: any) => {
   const tempClick = () => {
     console.log('click');
   };
@@ -53,4 +53,4 @@ const Register = ({ closeModal }: any) => {
   );
 };
 
-export default Register;
+export default PostUpload;
