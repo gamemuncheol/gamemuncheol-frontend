@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { CircleInfo, TempInformation, Path } from '@/assets/index';
 import { modaltitles } from '@/constants/PostUpload';
 import Progress from '@/components/@common/progress/Progress';
-
+import Input from '@/components/@common/input/Input';
 // 공통
 const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -50,10 +50,29 @@ const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
 };
 
 const Step1 = () => {
+  const [gameId, setGameId] = useState('');
+  const handleGameIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGameId(e.target.value);
+  };
+
+  const handleEnter = (e: any) => {
+    if (e.key === 'Enter') {
+      console.log(gameId);
+    }
+  };
   return (
     <div className="flex flex-col items-center p-5">
       <div className="flex flex-col gap-4">
-        <div>searchbar - 이후 추가</div>
+        {/* 이후 search bar로 수정 */}
+        <div className="w-full">
+          <Input
+            id="gameid"
+            value={gameId}
+            onChange={handleGameIdChange}
+            placeholder="검색어(게임ID)을 입력해 주세요."
+            onKeyDown={handleEnter}
+          ></Input>
+        </div>
         <div>
           <div className="flex flex-row items-center gap-1">
             <Image
