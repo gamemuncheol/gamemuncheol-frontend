@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface InputProps {
+interface InputProps extends React.HTMLProps<HTMLInputElement> {
   id: string;
   type?: string;
   label?: string;
@@ -16,6 +16,7 @@ const Input = ({
   value,
   onChange,
   placeholder,
+  ...props
 }: InputProps) => {
   return (
     <div className="mb-2">
@@ -27,6 +28,7 @@ const Input = ({
         onChange={onChange}
         className="placeholder:{color:black400} body04M w-full"
         placeholder={placeholder}
+        {...props}
       />
     </div>
   );
