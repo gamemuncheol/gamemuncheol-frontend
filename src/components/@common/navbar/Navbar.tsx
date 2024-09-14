@@ -1,15 +1,11 @@
-
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Separator from '@/components/@common/separator/Separator';
 import { navGroups } from '@/components/@common/navbar/data/navGroups';
-
+import PostUpload from '@/components/main/post-upload/PostUpload';
 
 export default function Navbar() {
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const closeRegisterModal = () => {
-    setIsRegisterModalOpen(false);
-  };
+  const [isUploadModalOpen, setUploadModalOpen] = useState(false);
   return (
     <nav className="sticky left-0 ml-10 flex h-full flex-shrink-0 flex-grow-0 basis-10 flex-col justify-start">
       {/* TODO: 친구 목록 */}
@@ -46,6 +42,12 @@ export default function Navbar() {
           </ul>
         );
       })}
+
+      {/* 게시물 등록 확인을 위한 임시 코드 */}
+      <button onClick={() => setUploadModalOpen(true)}>등록</button>
+      {isUploadModalOpen && (
+        <PostUpload closeModal={() => setUploadModalOpen(false)}></PostUpload>
+      )}
     </nav>
   );
 }
