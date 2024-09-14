@@ -1,5 +1,5 @@
 import { Modal } from '@/components/@common/modal/Modal';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { CircleInfo, TempInformation, Path } from '@/assets/index';
 import { modaltitles } from '@/constants/PostUpload';
@@ -59,13 +59,13 @@ const Step1 = () => {
 
   const handleEnter = (e: any) => {
     if (e.key === 'Enter') {
-      console.log(isSuccess);
-      // console.log(gameinfo);
+      console.log(gameinfo);
+      console.log(isError);
       setSearch(true);
     }
   };
 
-  const { isSuccess, data: gameinfo, refetch } = useGetGameInfo(gameId, search);
+  const { data: gameinfo, isError, isLoading } = useGetGameInfo(gameId, search);
 
   return (
     <div className="flex flex-col items-center p-5">
@@ -80,6 +80,7 @@ const Step1 = () => {
             onKeyDown={handleEnter}
           ></Input>
         </div>
+        {isError && <div>다시 입력해주세요</div>}
         <div>
           <div className="flex flex-row items-center gap-1">
             <Image
