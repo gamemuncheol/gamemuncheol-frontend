@@ -60,12 +60,17 @@ const Step1 = () => {
   const handleEnter = (e: any) => {
     if (e.key === 'Enter') {
       console.log(gameinfo);
-      console.log(isError);
       setSearch(true);
     }
   };
 
   const { data: gameinfo, isError, isLoading } = useGetGameInfo(gameId, search);
+
+  useEffect(() => {
+    if (search) {
+      setSearch(false);
+    }
+  }, [gameId, search]);
 
   return (
     <div className="flex flex-col items-center p-5">

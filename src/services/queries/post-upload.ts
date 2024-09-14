@@ -18,6 +18,7 @@ const postUploadQueryOptions = {
     queryKey: postUploadKeys.riotid(id),
     queryFn: () => postUploadService.getGameInfo(id),
     enabled: isEnabled,
+    retry: 0,
     onError: (error: AxiosError) => {
       if (error.response && error.response.status === 404) {
         console.log('404 에러 발생');
