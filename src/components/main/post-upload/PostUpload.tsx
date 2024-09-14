@@ -5,6 +5,7 @@ import { CircleInfo, TempInformation, Path } from '@/assets/index';
 import { modaltitles } from '@/constants/PostUpload';
 import Progress from '@/components/@common/progress/Progress';
 import Input from '@/components/@common/input/Input';
+import { useGetGameInfo } from '@/services/queries/post-upload';
 // 공통
 const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -51,15 +52,21 @@ const PostUpload = ({ closeModal }: { closeModal: () => void }) => {
 
 const Step1 = () => {
   const [gameId, setGameId] = useState('');
+  const [search, setSearch] = useState(false);
   const handleGameIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGameId(e.target.value);
   };
 
   const handleEnter = (e: any) => {
     if (e.key === 'Enter') {
-      console.log(gameId);
+      console.log(isSuccess);
+      // console.log(gameinfo);
+      setSearch(true);
     }
   };
+
+  const { isSuccess, data: gameinfo, refetch } = useGetGameInfo(gameId, search);
+
   return (
     <div className="flex flex-col items-center p-5">
       <div className="flex flex-col gap-4">
