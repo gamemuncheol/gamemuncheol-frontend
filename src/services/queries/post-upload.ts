@@ -8,8 +8,7 @@ import { AxiosError } from 'axios';
 const postUploadService = {
   getGameInfo: async (id: string) => {
     const response = await api.get(`/api/riot/search-matches/${id}`);
-    console.log('res', response);
-    return response.data;
+    return response.data.data;
   },
 };
 
