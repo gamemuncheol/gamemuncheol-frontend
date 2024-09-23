@@ -7,16 +7,14 @@ export default function Footer({ use }: FooterProps) {
   return (
     <footer>
       <ul
-        className={`flex items-center justify-center gap-4 p-10 body04 ${textColor}`}
+        className={`body04 flex items-center justify-center p-10 ${textColor}`}
       >
-        <li className="cursor-pointer">서비스 이용약관</li>
-
-        <span>￨</span>
-
-        <li className="cursor-pointer">개인정보처리방침</li>
-
-        <span>￨</span>
-
+        <li className="cursor-pointer after:mx-6 after:content-['|']">
+          서비스 이용약관
+        </li>
+        <li className="cursor-pointer after:mx-6 after:content-['|']">
+          개인정보처리방침
+        </li>
         <li className="cursor-pointer">© LoLMunCheol.</li>
       </ul>
     </footer>
