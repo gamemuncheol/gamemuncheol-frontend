@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
+
+const withPlugins = require('next-compose-plugins');
 const withVideos = require('next-videos');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: true,
+});
 
 const nextConfig = {
   images: {
@@ -26,4 +32,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withVideos(nextConfig);
+module.exports = withPlugins([withVideos, withBundleAnalyzer], nextConfig);
