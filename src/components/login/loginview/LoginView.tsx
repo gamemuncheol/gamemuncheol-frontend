@@ -3,23 +3,30 @@
 import Image from 'next/image';
 import loginlogo from '@/assets/login/loginlogo.svg';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 import { useLoginStore, useTempUserStore } from '@/store/useMemberStore';
 import { GoogleLogin, AppleLogin } from '@/components/index';
 import { useCookies } from 'react-cookie';
 
 export default function LoginView() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+function LoginContent() {
   const router = useRouter();
   const params = useSearchParams();
 
   const accessToken = params.get('accessToken') || '';
   const refreshToken = params.get('refreshToken');
   const tempUserKey = params.get('temporaryUserKey');
-  const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']);
+  const [_cookies, setCookie] = useCookies(['refreshToken']);
 
   //로그인 성공 여부
-  const isLoggined = useLoginStore((state) => state.isLoggined);
   const setIsLoggined = useLoginStore((state) => state.setIsLoggined);
 
   const setUserkey = useTempUserStore((state) => state.setUserkey);
@@ -56,7 +63,6 @@ export default function LoginView() {
           로그인 후 이용하실 수 있습니다.
         </div>
       </div>
-
       <div className="flex flex-col gap-4">
         <AppleLogin />
         <GoogleLogin />
